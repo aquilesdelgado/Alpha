@@ -1,0 +1,91 @@
+nav.Cabecera {
+  height: 68px;
+  display: flex;
+  position: relative;
+  width: 100vw;
+  margin-top: 1rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  vertical-align: middle;
+
+  ul{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin: 0;
+    padding: 0;
+    li{
+
+      list-style: none;
+      width: auto;
+      vertical-align: middle;
+
+      margin-left: 2rem;
+      a{
+
+        font-family: Roboto;
+        letter-spacing: 2px;
+
+        font-size: 1.4rem;
+        color: white;
+        text-decoration: none;
+        cursor: pointer;
+        img{
+          width: 10vw;
+          height: 3vw;
+          margin-right: 2rem;
+        }
+      }
+      a:hover{
+        color: rgb(255, 107, 3);
+        transform: scale(0.06);
+      }
+    }
+  }
+  form {
+
+    display: flex;
+    align-items: center;
+    align-content: center;
+    position: absolute;
+    right: 7vw;
+    vertical-align: middle;
+
+      input{
+        alignment: right;
+        position: relative;
+        right: 0%;
+        width: 20vw;
+        height: 3vw;
+        outline: none;
+        border-radius: 0;
+        border: 1px solid white;
+        vertical-align: middle;
+        //background-color: #1e0345;
+        font-size: 1.4rem;
+        color: white;
+        background: url("../../assets/images/lupa.png") no-repeat scroll 0 0 transparent;
+        background-size: 2.5vw;
+        padding: 5px 25px 5px 5px;
+        background-position: 19vw 4px;
+    }
+    input.botonbuscar{
+
+    }
+      img{
+        height: 2vw;
+        width: 2vw;
+        margin-left: 2vw;
+        vertical-align: middle;
+    }
+      img:hover{
+        cursor: pointer;
+      }
+      img.userHeader{
+        height: 3vw;
+        width: 3vw;
+      }
+  }
+
+}
+

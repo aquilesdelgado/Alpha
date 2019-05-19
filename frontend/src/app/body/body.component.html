@@ -1,0 +1,17 @@
+
+<app-preview-pelis></app-preview-pelis>
+
+<section>
+    <div class="contenedorcarousel">
+        <h1>Recomendadas por Popularidad</h1>
+        <app-sliders [arrayPelis]="peliculas" (detalles)="irPelis($event)"></app-sliders>
+        <h1>Recomendadas por Romance</h1>
+        <app-sliders [arrayPelis]="romance" (detalles)="irPelis($event)"></app-sliders>
+        <h1>Recomendadas por Comedia</h1>
+        <app-sliders [arrayPelis]="comedia" (detalles)="irPelis($event)"></app-sliders>
+        <h1>Recomendadas por Acción</h1>
+        <app-sliders [arrayPelis]="accion" (detalles)="irPelis($event)"></app-sliders>
+        <h1>Recomendadas por Horror</h1>
+        <app-sliders [arrayPelis]="horror" (detalles)="irPelis($event)"></app-sliders>
+    </div>
+</section>

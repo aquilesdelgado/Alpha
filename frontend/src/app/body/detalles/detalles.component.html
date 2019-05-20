@@ -1,0 +1,14 @@
+<section class="detalles">
+  <div class="peliculas1" [ngStyle]="{'background-image': getUrl()}">
+
+    <img [src]="movie.poster_path| imgenDetalles" alt="" class="peliculas__titulo__img">
+    <h2 class="peliculas__titulo">{{movie.title }}</h2>
+    <p class="peliculas__desc">{{movie.overview }}<br><button class="bottonBack" (click)="goBack()">Back</button></p>
+
+  </div>
+  <!--    <div *ngIf="movie.known_for | async">-->
+  <!--        <div *ngFor="">-->
+
+  <!--        </div>-->
+  <!--    </div>-->
+</section>

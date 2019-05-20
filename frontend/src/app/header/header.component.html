@@ -1,6 +1,6 @@
 <nav class="Cabecera">
     <ul>
-        <li><a href="#"><img class="Logo" src="../../assets/images/STREAMING.png" alt=""></a></li>
+        <li><a routerLink="home"><img class="Logo" src="../../assets/images/STREAMING.png" alt=""></a></li>
         <li><a href="#">Inicio</a></li>
         <li><a href="#">Géneros</a></li>
         <li><a href="#">Populares</a></li>
@@ -8,7 +8,7 @@
     </ul>
     <form class="form" (ngSubmit)="guardar(buscar.value)" #userForm="ngForm">
         <input class="input" type="search" name="buscar" ngModel required #buscar="ngModel" placeholder=”Titulo,Actor”>>
-        <img class="botonbuscar" type="image" src="../../assets/images/lupa.png" name="busqueda"  href="">
+        <img class="botonbuscar" type="submit" src="../../assets/images/lupa.png" name="busqueda"  href="">
         <img class="userHeader" type="image" src="../../assets/images/user.png" name="user" href="#">
     </form>
 

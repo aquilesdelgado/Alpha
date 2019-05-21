@@ -10,7 +10,16 @@ export class SlidersComponent implements OnInit {
   @Output() detalles: EventEmitter<any>;
   slideconfing = {
     slidesToShow: 6,
-    slidesToScroll: 4,
+    slidesToScroll: 1,
+    responsive: [
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          vertical: false
+        }
+      }
+    ],
     dots: false,
     infinite: false
   };

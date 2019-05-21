@@ -35,4 +35,7 @@ export class ResultComponent implements OnInit {
     const titulo = document.querySelector('.pelis_lista');
 
   }
+  irPelis(id: string) {
+    this.router.navigate(['/detalles', id]);
+  }
 }

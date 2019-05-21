@@ -8,12 +8,20 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+  }
 
   ngOnInit() {
   }
 
-    guardar(param: string) {
+  guardar(param: string) {
+    this.router.navigate(['/searchresult', param]);
+  }
+
+  onKeyPress(param: any) {
+    // this.values += event.target.value;
+    if (param.length > 0) {
       this.router.navigate(['/searchresult', param]);
     }
+  }
 }

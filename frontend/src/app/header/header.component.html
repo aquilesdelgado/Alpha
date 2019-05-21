@@ -6,9 +6,9 @@
         <li><a href="#">Populares</a></li>
         <li><a href="#">Mi cinemateca</a></li>
     </ul>
-    <form class="form" (ngSubmit)="guardar(buscar.value)" #userForm="ngForm">
-        <input class="input" type="search" name="buscar" ngModel required #buscar="ngModel" placeholder=”Titulo,Actor”>>
-        <img class="botonbuscar" type="submit" src="../../assets/images/lupa.png" name="busqueda"  href="">
+    <form class="form"  #userForm="ngForm">
+        <input class="input" type="search" (keypress)="onKeyPress(buscar.value)" name="buscar" ngModel required #buscar="ngModel" placeholder=”Titulo,Actores”>
+<!--        <img class="botonbuscar" type="submit" src="../../assets/images/lupa.png" name="busqueda" >-->
         <img class="userHeader" type="image" src="../../assets/images/user.png" name="user" href="#">
     </form>
 

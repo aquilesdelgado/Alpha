@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./preview-pelis.component.scss']
 })
 export class PreviewPelisComponent implements OnInit {
+  // @input urlVideo: [];
 
   constructor() { }
   ngOnInit() {

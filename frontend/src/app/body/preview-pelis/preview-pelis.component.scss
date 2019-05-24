@@ -1,15 +1,16 @@
 section{
+      div {
 
-      div.divPreview{
-        width: 100vw;
-        height: 50vw;
-        overflow: hidden;
-        display: flex;
-            iframe{
-                width: 150%;
-                height: 150%;
+          div.divPreview {
+            transform: scale(1.1);
+            width: 100vw;
+            height: 40vw;
+            overflow: hidden;
 
+            iframe {
+              width: 100%;
+              height: 100%;
             }
-       }
-
+          }
+      }
 }

@@ -9,6 +9,7 @@ section{
       display: grid;
       padding-right: 4px;
       width: 22%;
+      justify-content: space-between;
 
       h1 {
         display: none;
@@ -24,6 +25,8 @@ section{
 
       img {
         box-sizing: content-box;
+        width: auto;
+        height: 231px;
       }
 
       button {
@@ -42,10 +45,23 @@ section{
 
       a {
         cursor: pointer;
+        width: auto;
       }
       a:hover{
         transform: scale(1.1);
         transition: 0.3s;
+      }
+    }
+  }
+}
+@media (min-width: 480px) {
+  section{
+    width: 90%;
+    div {
+      width: 90%;
+      img{
+        width: 60%;
+        height: 60%;
       }
     }
   }

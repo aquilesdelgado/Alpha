@@ -2,8 +2,8 @@
   <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideconfing">
     <div ngxSlickItem class="pelis" *ngFor="let pelis of arrayPelis"><a (click)="irPelis(pelis.id)">
 
-      <h1 class="pelis_lista" (mouseover)="mostrar()">{{pelis.title}}</h1>
-      <img class="imagen" [src]="pelis.poster_path | addImage"></a>
+<!--      <h1 class="pelis_lista" (mouseover)="mostrar()">{{pelis.title}}</h1>-->
+      <img class="imagen"  [src]="pelis.poster_path | addImage"></a>
 <!--      <button class="botondetalles" (click)="irPelis(pelis.id)">Detalles</button>-->
 
     </div>

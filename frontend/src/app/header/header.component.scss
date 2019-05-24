@@ -1,4 +1,5 @@
 nav.Cabecera {
+  align-items: center;
   height: 68px;
   display: flex;
   position: relative;
@@ -7,7 +8,7 @@ nav.Cabecera {
   padding-left: 2rem;
   padding-right: 2rem;
   vertical-align: middle;
-  //background-color: #1e0345;
+  background-color: transparentize(#484848,0.5);
 
   ul{
     display: flex;
@@ -53,23 +54,49 @@ nav.Cabecera {
     vertical-align: middle;
 
       input{
-        alignment: right;
+        //alignment: right;
         position: relative;
         right: 0%;
-        width: 20vw;
+        width: 0.5vw;
         height: 3vw;
         outline: none;
         border-radius: 0;
-        border: 1px solid white;
+        border: transparent;
         vertical-align: middle;
         //background-color: #1e0345;
         font-size: 1.4rem;
         color: white;
         background: url("../../assets/images/lupa.png") no-repeat scroll 0 0 transparent;
+        //background: transparent;
         background-size: 2.5vw;
-        padding: 5px 25px 5px 5px;
-        background-position: 19vw 4px;
+        padding: 5px 5px 5px 33px;
+        background-position: right;
+        transition: 0.8s;
+
     }
+    input:hover{
+      width: 30vw;
+      height: 3vw;
+      border: solid white 1px;
+      transition: 0.8s;
+      background-position: left;
+    }
+    input:focus{
+      width: 30vw;
+      height: 3vw;
+      border: solid white 1px;
+      background-position: left;
+    }
+    input::-webkit-input-placeholder {
+      color: white;
+    }
+    input:-moz-placeholder {
+      color: white;
+    }
+    input:-ms-input-placeholder {
+      color: white;
+    }
+    .ng touched
     input.botonbuscar{
 
     }
@@ -81,6 +108,7 @@ nav.Cabecera {
     }
       img:hover{
         cursor: pointer;
+
       }
       img.userHeader{
         height: 3vw;

@@ -29,7 +29,8 @@
             "styles": [
               "src/styles.scss",
               "node_modules/slick-carousel/slick/slick.css",
-              "node_modules/slick-carousel/slick/slick-theme.css"
+              "node_modules/slick-carousel/slick/slick-theme.css",
+              "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true

@@ -1,0 +1,61 @@
+<!--
+<div *ngIf="movie">
+<form class="" (ngSubmit)="guardar(userForm)" #userForm="ngForm">
+  <label for="titulo">Titulo</label>
+  <input name="titulo" class="form-control mr-sm-2"  placeholder={{movie.title}}  ngModel>
+
+  <label for="Sinopsis">Sinopsis</label>
+  <input name="sinopsis" class="form-control mr-sm-2"  placeholder={{movie.overview}}  ngModel>
+
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [disabled]="!userForm.valid" >Editar</button>
+</form>
+</div>
+-->
+
+
+<section class="detalles">
+  <div *ngIf="movie">
+  <div class="peliculas1" [ngStyle]="{'background-image': getUrl()}">
+
+    <img [src]="movie.poster_path| imgenDetalles" alt="" class="peliculas__titulo__img">
+    <div>
+      <h2 class="peliculas__titulo">Editar {{movie.title }}</h2>
+
+      <form (ngSubmit)="guardar(userForm,movie.id)" #userForm="ngForm">
+      <div>
+      <label for="titulo">Titulo</label>
+      <input name="titulo" class="form-control mr-sm-2"  placeholder={{movie.title}} value="{{movie.title}}"  ngModel>
+        <input name="id" type="hidden" value="{{movie.id}}"  ngModel>
+      </div>
+
+      <div>
+      <label for="Sinopsis">Sinopsis</label>
+      <textarea name="sinopsis" class="form-control mr-sm-2"  placeholder={{movie.overview}} value="{{movie.overview}}"  ngModel>
+        </textarea>
+      </div>
+
+      <div>
+        <label for="path_poster">Path Imagen Poster</label>
+        <input name="path_poster" class="form-control mr-sm-2"  placeholder={{movie.poster_path}} value="{{movie.poster_path}}"  ngModel>
+      </div>
+
+      <div>
+        <label for="backdrop_path">Path Imagen Backdrop</label>
+        <input name="backdrop_path" class="form-control mr-sm-2"  placeholder={{movie.backdrop_path}} value="{{movie.backdrop_path}}"  ngModel>
+      </div>
+
+
+      <p class="peliculas__desc">
+        <button type="submit" class="editar" >Guardar Cambios</button>
+      </p>
+      </form>
+
+    </div>
+  </div>
+  <!--    <div *ngIf="movie.known_for | async">-->
+  <!--        <div *ngFor="">-->
+
+  <!--        </div>-->
+  <!--    </div>-->
+  </div>
+</section>

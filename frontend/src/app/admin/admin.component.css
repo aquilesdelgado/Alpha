@@ -1,0 +1,72 @@
+body {
+  background-color: #111;
+}
+
+section {
+  background-color: rgba(72, 72, 72, 0.65);
+  padding: 8% 5% 5% 5%;
+}
+section h2 {
+  padding-left: 2%;
+  color: #ff6b03;
+  font-family: Roboto;
+  letter-spacing: 2px;
+  font-size: 3rem;
+}
+section a.add {
+  display: block;
+  width: 15%;
+  margin: 2rem 0;
+  cursor: pointer;
+  background: rgba(212, 207, 207, 0.25);
+  padding: 12px 25px;
+  border: 1px solid #dddddd;
+  text-decoration: none;
+  color: #eee;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+  font-weight: lighter;
+  z-index: 2;
+  text-transform: uppercase;
+}
+section a.add:hover {
+  background: rgba(212, 207, 207, 0.45);
+}
+section div {
+  background-position: center;
+}
+section div img {
+  float: left;
+  margin: 2%;
+}
+section div div.peliculas1 {
+  background-blend-mode: multiply;
+}
+section div div.peliculas1 p {
+  font-family: Roboto;
+  letter-spacing: 2px;
+  font-size: 2rem;
+  color: white;
+  padding: 1rem;
+}
+section div div.peliculas1 p.info {
+  font-family: Roboto;
+  letter-spacing: 2px;
+  font-size: 1.6rem;
+  padding: 1.2rem;
+}
+section div div.peliculas1 p.info a {
+  text-decoration: none;
+  color: white;
+  font-size: inherit;
+}
+section div div.peliculas1 p.info span.basura i {
+  font-size: 2.5em;
+  padding-right: 2em;
+  cursor: pointer;
+}
+section div div.peliculas1 p.info a:hover {
+  color: antiquewhite;
+}
+
+/*# sourceMappingURL=admin.component.css.map */

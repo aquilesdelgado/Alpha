@@ -20,6 +20,10 @@ import { ImgenDetallesPipe } from './imgen-detalles.pipe';
 import { SafePipe } from './imgen-fondo.pipe';
 import { ResultComponent } from './body/result/result.component';
 import { ImageresultPipe } from './imageresult.pipe';
+import { AdminComponent } from './admin/admin.component';
+import { EditComponent } from './admin/edit/edit.component';
+import { AddmovieComponent } from './admin/addmovie/addmovie.component';
+import { JwtModule } from '@auth0/angular-jwt';
 
 
 
@@ -41,7 +45,9 @@ import { ImageresultPipe } from './imageresult.pipe';
     SafePipe,
     ResultComponent,
     ImageresultPipe,
-
+    AdminComponent,
+    EditComponent,
+    AddmovieComponent
   ],
   imports: [
     BrowserModule,
@@ -51,7 +57,15 @@ import { ImageresultPipe } from './imageresult.pipe';
     VgCoreModule,
     VgControlsModule,
     // SlickCarouselModule,
-    SlickModule.forRoot()
+    SlickModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function  tokenGetter() {
+          return     localStorage.getItem('access_token');},
+        whitelistedDomains: ['localhost:4200'],
+        blacklistedRoutes: ['http://localhost:4200/auth/login']
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

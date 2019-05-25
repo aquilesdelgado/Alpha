@@ -1,14 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer} from '@angular/platform-browser';
 
 @Pipe({
-  name: 'imgenFondo'
+  name: 'safeUrl'
 })
-export class ImgenFondoPipe implements PipeTransform {
+export class SafePipe implements PipeTransform {
 
-  urlImage = 'http://image.tmdb.org/t/original/';
+  urlImage = 'https://www.youtube.com/embed/';
 
-  transform(value: string): string {
-    return this.urlImage + value;
+  constructor(private sanitizer: DomSanitizer) {}
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
-
 }
+
+

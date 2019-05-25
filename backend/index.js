@@ -2,11 +2,32 @@ const express = require('express');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 const fetch = require('node-fetch');
+const session = require('express-session');
+const cors = require('cors');
+const errorHandler = require('errorhandler');
+const path = require('path');
+
+//Configure isProduction variable
+const isProduction = process.env.NODE_ENV === 'production';
 
 const app = express();
 
-app.use(express.static(__dirname + '/public'));
+app.use(cors({
+    origin: 'http://localhost:4200'
+  }));
+
+//app.use(express.static(__dirname + '/public'));
+//app.use(bodyParser.json());
+app.use(cors()); //acceso cors
+app.use(require('morgan')('dev')); //morgan es un logger
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({ secret: 'alfa-streaming', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
+
+if(!isProduction) {
+    app.use(errorHandler());
+}
 
 app.get('/',(req,res) => {
     res.send("listaPeliculas")
@@ -157,11 +178,36 @@ app.get('/peliculas',(req,res) => {
     })
 });
 
+app.post('/pelicula',(req,res) => {
+    let pelicula = req.body;
+    const newPelicula = new Pelicula(pelicula);
+    newPelicula.save((err, storedpelicula) => {
+        if (err){
+            return res.status(500).send({"error": "fallo"})
+        }
+        return res.json(storedpelicula)
+    });
+});
+
 app.get('/pelicula/:id',(req,res) => {
     //console.log(req.params.id);
     let id = req.params.id;
     let query = {id: id};
     Pelicula.findOne(query, function (err,peli) {
+        if (err){
+            return res.status(500).send({"error": "fallo al consultar pelicula"})
+        }
+        console.log (peli);
+        return res.json(peli)
+    })
+});
+
+app.get('/genero/:id',(req,res) => {
+    //console.log(req.params.id);
+    let id = parseInt(req.params.id);
+    let query = {genre_ids: {'$in': [id]}};
+    console.log(query);
+    Pelicula.find(query, function (err,peli) {
         if (err){
             return res.status(500).send({"error": "fallo al consultar pelicula"})
         }
@@ -195,6 +241,34 @@ app.put('/pelicula/:id',(req,res) => {
     })
 });
 
+// PASSPORT AUTH
+/* Models y rutas */
+require('./models/Users');
+require('./config/passport');
+app.use(require('./routes'));
 
-//https://api.themoviedb.org/3/movie/287947/videos?api_key=b623b1e7ec090ee229dbf096d96c976c&language=en-US
-//https://api.themoviedb.org/3/movie/287947/keywords?api_key=b623b1e7ec090ee229dbf096d96c976c&language=es-ES
+//Error handlers & middlewares
+//Controlamos si la respuesta devuelve un error
+if(!isProduction) {
+    app.use((err, req, res) => {
+        res.status(err.status || 500);
+
+        res.json({
+            errors: {
+                message: err.message,
+                error: err,
+            },
+        });
+    });
+}
+
+app.use((err, req, res) => {
+    res.status(err.status || 500);
+
+    res.json({
+        errors: {
+            message: err.message,
+            error: {},
+        },
+    });
+});

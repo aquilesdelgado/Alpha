@@ -7,6 +7,7 @@ import {ResultComponent} from './body/result/result.component';
 import {AdminComponent} from './admin/admin.component';
 import {EditComponent} from './admin/edit/edit.component';
 import {AddmovieComponent} from './admin/addmovie/addmovie.component';
+import {LoginComponent} from './login/login.component';
 
 
 const routes: Routes = [
@@ -15,7 +16,8 @@ const routes: Routes = [
   {path: 'searchresult/:param' , component: ResultComponent},
   {path: 'admin', component: AdminComponent},
   {path: 'admin/edit/:id' , component: EditComponent},
-  {path: 'admin/add', component: AddmovieComponent}
+  {path: 'admin/add', component: AddmovieComponent},
+  {path: 'login' , component: LoginComponent}
 ];
 
 @NgModule({

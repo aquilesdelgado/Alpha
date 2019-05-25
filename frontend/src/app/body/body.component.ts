@@ -9,12 +9,14 @@ import {PelisDatosService} from '../service/pelis-datos.service';
 })
 export class BodyComponent implements OnInit {
 
-  constructor(private router: Router, private pelisDatos: PelisDatosService) { }
+  constructor(private router: Router, private pelisDatos: PelisDatosService) {
+  }
   peliculas = [];
   comedia = [];
   accion = [];
   horror = [];
   romance = [];
+
   ngOnInit() {
     this.pelisDatos.getPelis().subscribe(datos => this.peliculas = datos["results"]);
     this.pelisDatos.getPelisComedia().subscribe(datos => this.comedia = datos["results"]);
@@ -25,4 +27,5 @@ export class BodyComponent implements OnInit {
   irPelis(id: string) {
     this.router.navigate(['/detalles', id]);
   }
+
 }

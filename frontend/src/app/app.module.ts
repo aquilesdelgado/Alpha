@@ -17,13 +17,16 @@ import {SlickModule} from 'ngx-slick';
 import { AddImagePipe } from './add-image.pipe';
 import { DetallesComponent } from './body/detalles/detalles.component';
 import { ImgenDetallesPipe } from './imgen-detalles.pipe';
-import { ImgenFondoPipe } from './imgen-fondo.pipe';
+import { SafePipe } from './imgen-fondo.pipe';
 import { ResultComponent } from './body/result/result.component';
 import { ImageresultPipe } from './imageresult.pipe';
 import { AdminComponent } from './admin/admin.component';
 import { EditComponent } from './admin/edit/edit.component';
 import { AddmovieComponent } from './admin/addmovie/addmovie.component';
 import { JwtModule } from '@auth0/angular-jwt';
+
+
+
 
 
 @NgModule({
@@ -33,11 +36,13 @@ import { JwtModule } from '@auth0/angular-jwt';
     HeaderComponent,
     BodyComponent,
     PreviewPelisComponent,
+
     SlidersComponent,
+
     AddImagePipe,
     DetallesComponent,
     ImgenDetallesPipe,
-    ImgenFondoPipe,
+    SafePipe,
     ResultComponent,
     ImageresultPipe,
     AdminComponent,

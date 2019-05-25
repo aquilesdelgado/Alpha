@@ -31,6 +31,7 @@ if(!isProduction) {
 mongoose.connect('mongodb://localhost:27017/alpha');
 mongoose.set('debug', true);
 
+
 /* Models y rutas */
 require('./models/Users');
 require('./config/passport');
@@ -62,4 +63,4 @@ app.use((err, req, res) => {
     });
 });
 
-app.listen(8000, () => console.log('Server running on http://localhost:8000/'));
+app.listen(3000, () => console.log('Server running on http://localhost:8000/'));

@@ -1,0 +1,60 @@
+section {
+  margin-left: 6rem;
+  margin-right: 6rem;
+}
+section ngx-slick div {
+  margin-right: 2rem;
+  list-style: none;
+  display: grid;
+  padding-right: 4px;
+  width: 22%;
+  justify-content: space-between;
+  border: black 3px;
+}
+section ngx-slick div h1 {
+  display: none;
+  width: 300px;
+  height: 60px;
+  color: #fff;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.5rem;
+  align-content: center;
+  position: relative;
+  bottom: 1em;
+}
+section ngx-slick div img {
+  box-sizing: content-box;
+  width: auto;
+  height: 231px;
+}
+section ngx-slick div button {
+  border-radius: 30px;
+  margin: 20px;
+  font-size: 1.2rem;
+  width: 100px;
+}
+section ngx-slick div button:hover {
+  background-color: #9c9c9c;
+  color: #ffffff;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+section ngx-slick div a {
+  cursor: pointer;
+  width: auto;
+}
+section ngx-slick div a:hover {
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+@media screen and (max-width: 480px) {
+  section {
+    width: 90%;
+  }
+  section ngx-slick div {
+    width: 90%;
+  }
+}
+
+/*# sourceMappingURL=sliders.component.css.map */

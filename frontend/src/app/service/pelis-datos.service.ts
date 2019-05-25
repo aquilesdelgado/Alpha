@@ -8,15 +8,17 @@ export class PelisDatosService {
   url = 'https://api.themoviedb.org/3/';
   url2 = 'https://api.themoviedb.org/3/movie/';
   apikey = '4d1fbdcf538ee0650a9a3cf6ce963c2b';
+  urlAPI = 'http://localhost:3000/';
 
   constructor(private http: HttpClient) { }
 
   getPelis() {
-    const topPelis = `${this.url}discover/movie?sort_by=popularity.desc&api_key=${this.apikey}`;
+    //const topPelis = `${this.url}discover/movie?sort_by=popularity.desc&api_key=${this.apikey}`;
+    const topPelis = `${this.urlAPI}peliculas/`;
     return this.http.get<any[]>(topPelis);
   }
   getMovieById(idpel) {
-    const idpelis = `${this.url}movie/${idpel}?api_key=${this.apikey}`;
+    const idpelis = `${this.urlAPI}pelicula/${idpel}`;
     return this.http.get<any[]>(idpelis);
   }
   getSearchResult(param) {
@@ -24,19 +26,19 @@ export class PelisDatosService {
     return this.http.get<any[]>(urlsearch);
   }
   getPelisComedia() {
-    const topPelis = `${this.url}discover/movie?with_genres=35&sort_by=vote_average.desc&api_key=${this.apikey}`;
+    const topPelis = `${this.urlAPI}genero/35`;
     return this.http.get<any[]>(topPelis);
   }
   getPelisAccion() {
-    const topPelis = `${this.url}discover/movie?with_genres=28&sort_by=vote_average.desc&api_key=${this.apikey}`;
+    const topPelis = `${this.urlAPI}genero/28`;
     return this.http.get<any[]>(topPelis);
   }
   getPelisHorror() {
-    const topPelis = `${this.url}discover/movie?with_genres=27&sort_by=vote_average.desc&api_key=${this.apikey}`;
+    const topPelis = `${this.urlAPI}genero/27`;
     return this.http.get<any[]>(topPelis);
   }
   getPelisRomance() {
-    const topPelis = `${this.url}discover/movie?with_genres=10749&sort_by=vote_average.desc&api_key=${this.apikey}`;
+    const topPelis = `${this.urlAPI}genero/10749`;
     return this.http.get<any[]>(topPelis);
   }
   getMovieKey(id){

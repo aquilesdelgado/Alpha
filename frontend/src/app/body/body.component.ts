@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import {PelisDatosService} from '../service/pelis-datos.service';
 
@@ -18,12 +18,15 @@ export class BodyComponent implements OnInit {
   romance = [];
 
   ngOnInit() {
-    this.pelisDatos.getPelis().subscribe(datos => this.peliculas = datos["results"]);
-    this.pelisDatos.getPelisComedia().subscribe(datos => this.comedia = datos["results"]);
-    this.pelisDatos.getPelisAccion().subscribe(datos => this.accion = datos["results"]);
-    this.pelisDatos.getPelisHorror().subscribe(datos => this.horror = datos["results"]);
-    this.pelisDatos.getPelisRomance().subscribe(datos => this.romance = datos["results"]);
+    this.pelisDatos.getPelis().subscribe(datos => this.peliculas = datos);
+    this.pelisDatos.getPelisComedia().subscribe(datos => this.comedia = datos);
+    this.pelisDatos.getPelisAccion().subscribe(datos => this.accion = datos);
+    this.pelisDatos.getPelisHorror().subscribe(datos => this.horror = datos);
+    this.pelisDatos.getPelisRomance().subscribe(datos => this.romance = datos);
+
   }
+
+
   irPelis(id: string) {
     this.router.navigate(['/detalles', id]);
   }

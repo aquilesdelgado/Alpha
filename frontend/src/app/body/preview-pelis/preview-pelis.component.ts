@@ -38,7 +38,7 @@ export class PreviewPelisComponent implements OnInit {
   ngOnInit() {
        this.pelisDatos.getPelis().subscribe(datos => {
           // @ts-ignore
-           this.movie = datos.results[0];
+           this.movie = datos[0];
            console.log(this.movie.id);
            this.pelisDatos.getMovieKey(this.movie.id).subscribe(datos => {
               // @ts-ignore

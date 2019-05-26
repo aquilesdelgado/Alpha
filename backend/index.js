@@ -34,7 +34,7 @@ app.get('/',(req,res) => {
 });
 app.listen(3000);
 
-mongoose.connect('mongodb://localhost:27017/alpha');
+mongoose.connect('mongodb://127.0.0.1:27017/alpha');
 
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
@@ -51,7 +51,7 @@ let urlDiscover = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularit
 
 
 app.get('/cargapeliculas',(req,res) => {
-    const NUMPAG = 6;
+    const NUMPAG = 41;
     for (let i=1; i< NUMPAG; i++){
         let urlDiscoverpagina = urlDiscover + i.toString();
         fetch(urlDiscoverpagina)
@@ -175,7 +175,7 @@ app.get('/peliculas',(req,res) => {
         }
         console.log (pelis);
         return res.json(pelis)
-    })
+    }).limit(30)
 });
 
 app.post('/pelicula',(req,res) => {
@@ -213,7 +213,7 @@ app.get('/genero/:id',(req,res) => {
         }
         console.log (peli);
         return res.json(peli)
-    })
+    }).limit(30)
 });
 
 app.delete('/pelicula/:id',(req,res) => {

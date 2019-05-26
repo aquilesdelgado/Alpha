@@ -30,7 +30,7 @@ export class PreviewPelisComponent implements OnInit {
   movie: any = {};
   isLoggedIn = true;
   youtubePart1 = 'https://www.youtube.com/embed/';
-  youtubePart2 = '?enablejsapi=1&rel=1&showinfo=1&modestbranding=1&controls=0&autoplay=1&mute=1';
+  youtubePart2 = '?enablejsapi=1&rel=1&showinfo=1&modestbranding=1&controls=1&autoplay=1&mute=1';
   youtubeUrl: string;
 
   constructor(private activateRoute: ActivatedRoute, private pelisDatos: PelisDatosService, ) {
@@ -64,4 +64,6 @@ export class PreviewPelisComponent implements OnInit {
   loggedOut() {
     this.isLoggedIn = true;
   }
+
+
 }

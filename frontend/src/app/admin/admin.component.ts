@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {PelisDatosService} from '../service/pelis-datos.service';
 
@@ -14,7 +14,7 @@ export class AdminComponent implements OnInit {
   peliculas = [];
 
   ngOnInit() {
-    this.pelisDatos.getPelis().subscribe(datos => this.peliculas = datos["results"]);
+    this.pelisDatos.getPelis().subscribe(datos => this.peliculas = datos);
   }
 
   editar(id: string) {
@@ -30,7 +30,7 @@ export class AdminComponent implements OnInit {
       method: 'DELETE', // or 'PUT'
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
-      .then(response => console.log('Success:', response));
+      .then(() =>  this.ngOnInit());
   }
 
 }

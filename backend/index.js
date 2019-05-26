@@ -1,38 +1,51 @@
+require('rootpath')();
 const express = require('express');
-let bodyParser = require('body-parser');
+// let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
 const fetch = require('node-fetch');
-const session = require('express-session');
-const cors = require('cors');
-const errorHandler = require('errorhandler');
-const path = require('path');
 
-//Configure isProduction variable
-const isProduction = process.env.NODE_ENV === 'production';
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const jwt = require('_helpers/jwt');
+const errorHandler = require('_helpers/error-handler');
 
 const app = express();
+
+const api = express();
+
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+api.use(bodyParser.urlencoded({ extended: false }));
+api.use(bodyParser.json());
 
 app.use(cors({
     origin: 'http://localhost:4200'
   }));
 
-//app.use(express.static(__dirname + '/public'));
-//app.use(bodyParser.json());
-app.use(cors()); //acceso cors
-app.use(require('morgan')('dev')); //morgan es un logger
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({ secret: 'alfa-streaming', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
+api.use(cors({
+    origin: 'http://localhost:4200'
+}));
 
-if(!isProduction) {
-    app.use(errorHandler());
-}
+// use JWT auth to secure the api
+app.use(jwt());
 
-app.get('/',(req,res) => {
+// api routes
+app.use('/users', require('./users/users.controller'));
+
+// global error handler
+app.use(errorHandler);
+
+api.get('/',(req,res) => {
     res.send("listaPeliculas")
 });
-app.listen(3000);
+
+// API DE PELICULAS EN EL PUERTO 3000
+// API AUTENTICACION JWT en PUERTO 4000
+
+api.listen(3000);
+app.listen(4000);
 
 mongoose.connect('mongodb://localhost:27017/alpha');
 
@@ -50,7 +63,7 @@ const Pelicula = require('./models/peliculamodel');
 let urlDiscover = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&language=es-ES&api_key=b623b1e7ec090ee229dbf096d96c976c&page=';
 
 
-app.get('/cargapeliculas',(req,res) => {
+api.get('/cargapeliculas',(req,res) => {
     const NUMPAG = 6;
     for (let i=1; i< NUMPAG; i++){
         let urlDiscoverpagina = urlDiscover + i.toString();
@@ -168,7 +181,7 @@ const actualizaDirector = (id,crew,res) => {
 
 /* Definimos los endpoints de consulta de peliculas*/
 
-app.get('/peliculas',(req,res) => {
+api.get('/peliculas',(req,res) => {
     Pelicula.find(function (err,pelis) {
         if (err){
             return res.status(500).send({"error": "fallo"})
@@ -178,7 +191,7 @@ app.get('/peliculas',(req,res) => {
     })
 });
 
-app.post('/pelicula',(req,res) => {
+api.post('/pelicula',(req,res) => {
     let pelicula = req.body;
     const newPelicula = new Pelicula(pelicula);
     newPelicula.save((err, storedpelicula) => {
@@ -189,7 +202,7 @@ app.post('/pelicula',(req,res) => {
     });
 });
 
-app.get('/pelicula/:id',(req,res) => {
+api.get('/pelicula/:id',(req,res) => {
     //console.log(req.params.id);
     let id = req.params.id;
     let query = {id: id};
@@ -202,7 +215,7 @@ app.get('/pelicula/:id',(req,res) => {
     })
 });
 
-app.get('/genero/:id',(req,res) => {
+api.get('/genero/:id',(req,res) => {
     //console.log(req.params.id);
     let id = parseInt(req.params.id);
     let query = {genre_ids: {'$in': [id]}};
@@ -216,7 +229,7 @@ app.get('/genero/:id',(req,res) => {
     })
 });
 
-app.delete('/pelicula/:id',(req,res) => {
+api.delete('/pelicula/:id',(req,res) => {
     let id = req.params.id;
     let query = {id: id};
     Pelicula.findOneAndRemove(query, function (err,peli) {
@@ -228,7 +241,7 @@ app.delete('/pelicula/:id',(req,res) => {
     })
 });
 
-app.put('/pelicula/:id',(req,res) => {
+api.put('/pelicula/:id',(req,res) => {
     let id = req.params.id;
     let mod = req.body;
     let query = {id: id};
@@ -239,36 +252,4 @@ app.put('/pelicula/:id',(req,res) => {
         console.log (peli);
         return res.json(peli)
     })
-});
-
-// PASSPORT AUTH
-/* Models y rutas */
-require('./models/Users');
-require('./config/passport');
-app.use(require('./routes'));
-
-//Error handlers & middlewares
-//Controlamos si la respuesta devuelve un error
-if(!isProduction) {
-    app.use((err, req, res) => {
-        res.status(err.status || 500);
-
-        res.json({
-            errors: {
-                message: err.message,
-                error: err,
-            },
-        });
-    });
-}
-
-app.use((err, req, res) => {
-    res.status(err.status || 500);
-
-    res.json({
-        errors: {
-            message: err.message,
-            error: {},
-        },
-    });
 });

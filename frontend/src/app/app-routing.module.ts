@@ -8,16 +8,19 @@ import {AdminComponent} from './admin/admin.component';
 import {EditComponent} from './admin/edit/edit.component';
 import {AddmovieComponent} from './admin/addmovie/addmovie.component';
 import {LoginComponent} from './login/login.component';
+import {AuthGuard} from './_guards';
+import {RegisterComponent} from './register/register.component';
 
 
 const routes: Routes = [
-  {path: 'home' , component: BodyComponent},
+  {path: 'home' , component: BodyComponent, canActivate: [AuthGuard]},
   {path: 'detalles/:id' , component: DetallesComponent},
   {path: 'searchresult/:param' , component: ResultComponent},
-  {path: 'admin', component: AdminComponent},
-  {path: 'admin/edit/:id' , component: EditComponent},
-  {path: 'admin/add', component: AddmovieComponent},
-  {path: 'login' , component: LoginComponent}
+  {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  {path: 'admin/edit/:id' , component: EditComponent, canActivate: [AuthGuard]},
+  {path: 'admin/add', component: AddmovieComponent, canActivate: [AuthGuard]},
+  {path: 'login' , component: LoginComponent},
+  {path: 'register' , component: RegisterComponent}
 ];
 
 @NgModule({

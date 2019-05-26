@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HeaderComponent } from './header/header.component';
 import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BodyComponent } from './body/body.component';
 import { PreviewPelisComponent } from './body/preview-pelis/preview-pelis.component';
 import {VgCoreModule} from 'videogular2/core';
@@ -24,7 +24,10 @@ import { AdminComponent } from './admin/admin.component';
 import { EditComponent } from './admin/edit/edit.component';
 import { AddmovieComponent } from './admin/addmovie/addmovie.component';
 import { JwtModule } from '@auth0/angular-jwt';
-
+import { ReactiveFormsModule }    from '@angular/forms';
+import { AlertComponent } from './_components';
+import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { RegisterComponent } from './register/register.component';
 
 
 
@@ -47,7 +50,9 @@ import { JwtModule } from '@auth0/angular-jwt';
     ImageresultPipe,
     AdminComponent,
     EditComponent,
-    AddmovieComponent
+    AddmovieComponent,
+    AlertComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -56,18 +61,12 @@ import { JwtModule } from '@auth0/angular-jwt';
     HttpClientModule,
     VgCoreModule,
     VgControlsModule,
+    ReactiveFormsModule,
     // SlickCarouselModule,
     SlickModule.forRoot(),
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: function  tokenGetter() {
-          return     localStorage.getItem('access_token');},
-        whitelistedDomains: ['localhost:4200'],
-        blacklistedRoutes: ['http://localhost:4200/auth/login']
-      }
-    })
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

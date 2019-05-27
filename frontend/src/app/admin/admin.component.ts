@@ -14,7 +14,7 @@ export class AdminComponent implements OnInit {
   peliculas = [];
 
   ngOnInit() {
-    this.pelisDatos.getPelis().subscribe(datos => this.peliculas = datos["results"]);
+    this.pelisDatos.getPelis().subscribe(datos => this.peliculas = datos);
   }
 
   editar(id: string) {

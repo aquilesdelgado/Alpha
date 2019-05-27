@@ -39,29 +39,32 @@ section {
       bottom: 4%;
       width: 6vw;
       height: 4vw;
-      background-color: transparentize(#fff, 0.6);
-      color: rgb(255, 107, 3);
+      background-color: transparent;
+      color: white;
       font-size: 2rem;
       border-radius: 30px;
+      border: 1px solid white;
     }
 
     button.bottonTrailer {
       position: absolute;
       left: 49%;
       bottom: 4%;
-      width: 7vw;
+      width: 8vw;
       height: 4vw;
-      background-color: transparentize(#fff, 0.6);
-      color: rgb(255, 107, 3);
+      background-color: transparent;
+      color: white;
       font-size: 2rem;
       border-radius: 30px;
+      border: 1px solid white;
     }
 
     button:hover {
       opacity: 1;
-      background-color: transparentize(rgb(255, 107, 3), 0);
-      color: white;
+      border: 1px solid white;
+      background-color: transparent;
       transition: 0.2s;
+      color: rgb(255, 107, 3);
     }
   }
 

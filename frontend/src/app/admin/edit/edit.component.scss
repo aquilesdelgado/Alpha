@@ -52,16 +52,17 @@ section{
         input::-webkit-input-placeholder,
         textarea::-webkit-input-placeholder,
         textarea::placeholder{
-          color: white;
+          color: #ff6b03;
         }
         input:-moz-placeholder,
         textarea:-moz-placeholder{
-          color: white;
+          color: #ff6b03;
         }
         input:-ms-input-placeholder,
         textarea:-ms-input-placeholder{
-          color: white;
+          color: #ff6b03;
         }
+
         textarea {
           width: 50%;
           height: 100px;

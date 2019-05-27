@@ -64,6 +64,10 @@ export class PreviewPelisComponent implements OnInit {
   loggedOut() {
     this.isLoggedIn = true;
   }
-
-
+    checklogged() {
+        if (this.isLoggedIn === false) {
+            this.isLoggedIn = false;
+        }
+        this.isLoggedIn = true;
+    }
 }

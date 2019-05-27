@@ -61,6 +61,7 @@ export class EditComponent implements OnInit {
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response));
-    this.router.navigate(['/admin']);
+    // this.router.navigate(['/admin']);
+    window.history.back();
   }
 }

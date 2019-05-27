@@ -229,7 +229,7 @@ app.delete('/pelicula/:id',(req,res) => {
 });
 
 app.put('/pelicula/:id',(req,res) => {
-    let id = req.params.id;
+    let id = parseInt(req.params.id);
     let mod = req.body;
     let query = {id: id};
     Pelicula.findOneAndUpdate(query, mod, function (err,peli) {

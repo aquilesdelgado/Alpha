@@ -24,7 +24,7 @@
       <form (ngSubmit)="guardar(userForm,movie.id)" #userForm="ngForm">
       <div>
       <label for="titulo">Titulo</label>
-      <input name="titulo" class="form-control mr-sm-2"  placeholder={{movie.title}} value="{{movie.title}}"  ngModel autocomplete="off">
+        <input name="titulo" class="form-control mr-sm-2"  placeholder={{movie.title}} value="{{movie.title}}"  ngModel autocomplete="off">
         <input name="id" type="hidden" value="{{movie.id}}"  ngModel>
       </div>
 

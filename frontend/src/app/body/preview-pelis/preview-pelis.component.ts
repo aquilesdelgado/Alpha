@@ -33,18 +33,14 @@ export class PreviewPelisComponent implements OnInit {
   youtubePart2 = '?enablejsapi=1&rel=1&showinfo=1&modestbranding=1&controls=1&autoplay=1&mute=1';
   youtubeUrl: string;
 
-  constructor(private activateRoute: ActivatedRoute, private pelisDatos: PelisDatosService, ) {
+  constructor(private activateRoute: ActivatedRoute, private pelisDatos: PelisDatosService ) {
   }
   ngOnInit() {
        this.pelisDatos.getPelis().subscribe(datos => {
           // @ts-ignore
            this.movie = datos[0];
-           console.log(this.movie.id);
-           this.pelisDatos.getMovieKey(this.movie.id).subscribe(datos => {
-              // @ts-ignore
-              const idpelis = datos.results[0].key;
-              this.youtubeUrl = `${this.youtubePart1}${idpelis}${this.youtubePart2}`;
-          });
+           console.log(this.movie);
+           this.youtubeUrl = `${this.youtubePart1}${this.movie.key}${this.youtubePart2}`;
       });
        this.changeLog();
   }
@@ -65,9 +61,7 @@ export class PreviewPelisComponent implements OnInit {
     this.isLoggedIn = true;
   }
     checklogged() {
-        if (this.isLoggedIn === false) {
-            this.isLoggedIn = false;
-        }
-        this.isLoggedIn = true;
+      setTimeout(() => this.isLoggedIn = true
+        , 130000);
     }
 }

@@ -52,15 +52,15 @@ section div div.peliculas1 div input {
 section div div.peliculas1 div input::-webkit-input-placeholder,
 section div div.peliculas1 div textarea::-webkit-input-placeholder,
 section div div.peliculas1 div textarea::placeholder {
-  color: white;
+  color: #ff6b03;
 }
 section div div.peliculas1 div input:-moz-placeholder,
 section div div.peliculas1 div textarea:-moz-placeholder {
-  color: white;
+  color: #ff6b03;
 }
 section div div.peliculas1 div input:-ms-input-placeholder,
 section div div.peliculas1 div textarea:-ms-input-placeholder {
-  color: white;
+  color: #ff6b03;
 }
 section div div.peliculas1 div textarea {
   width: 50%;

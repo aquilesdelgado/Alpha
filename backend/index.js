@@ -63,13 +63,9 @@ const Pelicula = require('./models/peliculamodel');
 let urlDiscover = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&language=es-ES&api_key=b623b1e7ec090ee229dbf096d96c976c&page=';
 
 
-<<<<<<< HEAD
-api.get('/cargapeliculas',(req,res) => {
-    const NUMPAG = 6;
-=======
+
 app.get('/cargapeliculas',(req,res) => {
     const NUMPAG = 41;
->>>>>>> 860369bcb83eca64cb9cf26772e637c61edcbd7f
     for (let i=1; i< NUMPAG; i++){
         let urlDiscoverpagina = urlDiscover + i.toString();
         fetch(urlDiscoverpagina)
@@ -246,13 +242,10 @@ api.delete('/pelicula/:id',(req,res) => {
     })
 });
 
-<<<<<<< HEAD
-api.put('/pelicula/:id',(req,res) => {
-    let id = req.params.id;
-=======
+
 app.put('/pelicula/:id',(req,res) => {
     let id = parseInt(req.params.id);
->>>>>>> 860369bcb83eca64cb9cf26772e637c61edcbd7f
+
     let mod = req.body;
     let query = {id: id};
     Pelicula.findOneAndUpdate(query, mod, function (err,peli) {

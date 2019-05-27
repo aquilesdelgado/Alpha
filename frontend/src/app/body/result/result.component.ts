@@ -20,8 +20,8 @@ export class ResultComponent implements OnInit {
     this.activatedrouter.params.subscribe(params => {
       this.params = params["param"];
 
-      this.peliServe.getSearchResult(this.params).subscribe(datos => {
-        this.resultPelis = datos["results"];
+      this.peliServe.getPelisBuscador(this.params).subscribe(datos => {
+        this.resultPelis = datos;
 
       });
     });

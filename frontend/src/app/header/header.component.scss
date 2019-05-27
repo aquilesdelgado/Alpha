@@ -1,3 +1,11 @@
+[aos="fade"] {
+  opacity: 0;
+  transition-property: opacity;
+}
+
+[aos="fade"].aos-animate {
+  opacity: 1;
+}
 nav.Cabecera {
   align-items: center;
   height: 68px;
@@ -76,7 +84,6 @@ nav.Cabecera {
       width: 30vw;
       height: 3vw;
       border: solid white 1px;
-      transition: 0.8s;
       background-position: left;
     }
     input:focus{

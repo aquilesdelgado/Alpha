@@ -24,4 +24,5 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/searchresult', param]);
     }
   }
+
 }

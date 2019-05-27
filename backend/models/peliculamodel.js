@@ -13,7 +13,8 @@ const PeliculaSchema = new mongoose.Schema({
     overview: String,
     genres: Array,
     cast: Array,
-    director: String
+    director: String,
+    key: String
 
 }, { versionKey: false });
 

@@ -1,15 +1,24 @@
-<section class="detalles">
-  <div class="peliculas1" [ngStyle]="{'background-image': getUrl()}">
+<section class="detalles" xmlns="http://www.w3.org/1999/html">
+    <ng-template [ngIf]="isLoggedIn" [ngIfElse]="isLoggedOut">
+    <div class="peliculas1" [ngStyle]="{'background-image': getUrl()}">
 
-    <img [src]="movie.poster_path| imgenDetalles" alt="" class="peliculas__titulo__img">
-    <div>
-    <h2 class="peliculas__titulo">{{movie.title }}</h2>
-    <p class="peliculas__desc">{{movie.overview }}<br><button class="bottonBack" (click)="goBack()">Back</button></p>
-  </div>
-  </div>
-  <!--    <div *ngIf="movie.known_for | async">-->
-  <!--        <div *ngFor="">-->
+        <img [src]="movie.poster_path| imgenDetalles" alt="" class="peliculas__titulo__img">
+        <div>
+            <h2 class="peliculas__titulo">{{movie.title }}</h2>
+            <p class="peliculas__desc">{{movie.overview }}<br></p>
+        </div>
+        <button class="bottonBack" (click)="goBack()">Back</button>
+        <button class="bottonTrailer" (click)="goTrailer()"> Ver Trailer</button>
+    </div>
+    </ng-template>
 
-  <!--        </div>-->
-  <!--    </div>-->
+<ng-template #isLoggedOut>
+    <iframe class="divVideo" [src]="youtubeUrl | safeUrl" frameborder="0" #htmliFrameElement  (load)="flechaLoad()" (mousemove)="flecha()" width="1080px" height="720px" allowfullscreen="allowfullscreen"
+            mozallowfullscreen="mozallowfullscreen"
+            msallowfullscreen="msallowfullscreen"
+            oallowfullscreen="oallowfullscreen"
+            webkitallowfullscreen="webkitallowfullscreen">
+    </iframe>
+    <button *ngIf="verflecha" class="flecha" (click)="loggedOut()">&larr;</button>
+</ng-template>
 </section>

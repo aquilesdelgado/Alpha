@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PelisDatosService} from '../../service/pelis-datos.service';
 import { HttpClient } from '@angular/common/http';
@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
+
   id: string;
   movie: any = {};
 
@@ -20,6 +21,7 @@ export class EditComponent implements OnInit {
         this.movie = datos;
       });
     });
+
   }
 
   ngOnInit() {
@@ -33,19 +35,19 @@ export class EditComponent implements OnInit {
     return `url('http://image.tmdb.org/t/original/${this.movie.poster_path}')`;
   }
 
-  guardar(userForm,id){
-    let title = (userForm.value.titulo);
-    let overview = (userForm.value.sinopsis);
-    //let id = (userForm.value.id);
-    console.log("Titulo: " + title);
-    console.log("ID: " + id);
-    let data =     {
-      "title": title,
-      "overview": overview
+  guardar(userForm, id) {
+    const title = (userForm.value.titulo);
+    const overview = (userForm.value.sinopsis);
+    // let id = (userForm.value.id);
+    console.log('Titulo: ' + title);
+    console.log('ID: ' + id);
+    const data =     {
+      title,
+      overview
     };
 
 
-    let url = `http://localhost:3000/pelicula/${id}/`;
+    const url = `http://localhost:3000/pelicula/${id}/`;
 
 
     fetch(url, {
@@ -54,12 +56,12 @@ export class EditComponent implements OnInit {
       headers: {
         'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        Accept: 'application/json'
       }
     }).then(res => res.json())
       .catch(error => console.error('Error:', error))
       .then(response => console.log('Success:', response));
-
-    this.router.navigate(['/admin']);
+    // this.router.navigate(['/admin']);
+    window.history.back();
   }
 }

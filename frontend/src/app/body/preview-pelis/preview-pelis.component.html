@@ -1,8 +1,8 @@
 <div class="completo" (mouseout)="loggedOut()">
 <div class="description">
-    <h1 class="peliculas__titulo">{{movie.title }}</h1>
+    <h1 class="peliculas__titulo" (mouseover)="checklogged()">{{movie.title }}</h1>
     <div>
-        <h2 class="peliculas__desc">{{movie.overview }}</h2>
+        <h2 class="peliculas__desc" (mouseover)="checklogged()">{{movie.overview }}</h2>
     </div>
 </div>
 <ng-template [ngIf]="isLoggedIn" [ngIfElse]="isLoggedOut" >
@@ -21,9 +21,10 @@
     <section>
         <div>
             <div class="divPreview">
-                <iframe name="iframe" [src]="youtubeUrl | safeUrl" frameborder="0"></iframe>
+                <iframe name="iframe" [src]="youtubeUrl | safeUrl" frameborder="0" ></iframe>
             </div>
         </div>
     </section>
 </ng-template>
 </div>
+

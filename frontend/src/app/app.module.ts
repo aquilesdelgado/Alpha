@@ -9,8 +9,6 @@ import {FormsModule} from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BodyComponent } from './body/body.component';
 import { PreviewPelisComponent } from './body/preview-pelis/preview-pelis.component';
-import {VgCoreModule} from 'videogular2/core';
-import {VgControlsModule} from 'videogular2/controls';
 import { SlidersComponent } from './body/sliders/sliders.component';
 import {SlickCarouselModule} from 'ngx-slick-carousel';
 import {SlickModule} from 'ngx-slick';
@@ -28,6 +26,9 @@ import { ReactiveFormsModule }    from '@angular/forms';
 import { AlertComponent } from './_components';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { RegisterComponent } from './register/register.component';
+
+
+
 
 
 
@@ -59,11 +60,23 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+<<<<<<< HEAD
     VgCoreModule,
     VgControlsModule,
     ReactiveFormsModule,
     // SlickCarouselModule,
     SlickModule.forRoot(),
+=======
+    SlickModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: function  tokenGetter() {
+          return     localStorage.getItem('access_token'); },
+        whitelistedDomains: ['localhost:4200'],
+        blacklistedRoutes: ['http://localhost:4200/auth/login']
+      }
+    })
+>>>>>>> 860369bcb83eca64cb9cf26772e637c61edcbd7f
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],

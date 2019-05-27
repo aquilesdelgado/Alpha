@@ -13,8 +13,9 @@ export class AdminComponent implements OnInit {
 
   peliculas = [];
 
+
   ngOnInit() {
-    this.pelisDatos.getPelis().subscribe(datos => this.peliculas = datos);
+    this.pelisDatos.getPelisAdmin().subscribe(datos => this.peliculas = datos);
   }
 
   editar(id: string) {
@@ -33,4 +34,12 @@ export class AdminComponent implements OnInit {
       .then(() =>  this.ngOnInit());
   }
 
+  onKeyPress(value: any) {
+    if (value.length > 0) {
+      this.pelisDatos.getPelisBuscador(value).subscribe(datos => {
+        this.peliculas = datos;
+      });
+      console.log(this.peliculas);
+    }
+  }
 }

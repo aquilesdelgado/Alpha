@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -8,10 +8,19 @@ import {Router} from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+  @HostListener('window:scroll', ['$event'])
+  modificarHeader( $event: Event ) {
+      document.querySelector('nav').style.backgroundColor = 'rgba(48,48,48,1)';
+      setTimeout(() => {
+        document.querySelector('nav').style.backgroundColor = 'rgba(48,48,48,0)';
+      }, 3000);
+  }
+
   constructor(private router: Router) {
   }
 
   ngOnInit() {
+
   }
 
   guardar(param: string) {

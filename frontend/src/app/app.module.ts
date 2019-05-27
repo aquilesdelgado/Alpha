@@ -60,23 +60,8 @@ import { RegisterComponent } from './register/register.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-<<<<<<< HEAD
-    VgCoreModule,
-    VgControlsModule,
     ReactiveFormsModule,
-    // SlickCarouselModule,
-    SlickModule.forRoot(),
-=======
-    SlickModule.forRoot(),
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: function  tokenGetter() {
-          return     localStorage.getItem('access_token'); },
-        whitelistedDomains: ['localhost:4200'],
-        blacklistedRoutes: ['http://localhost:4200/auth/login']
-      }
-    })
->>>>>>> 860369bcb83eca64cb9cf26772e637c61edcbd7f
+    SlickModule.forRoot()
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],

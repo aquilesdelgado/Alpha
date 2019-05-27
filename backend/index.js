@@ -22,7 +22,7 @@ api.use(bodyParser.json());
 
 app.use(cors({
     origin: 'http://localhost:4200'
-  }));
+}));
 
 api.use(cors({
     origin: 'http://localhost:4200'
@@ -58,31 +58,33 @@ db.once('open', function() {
 });
 
 const Pelicula = require('./models/peliculamodel');
+let peliculasIDs = [];
 
 /* URLS de conexión a MovieDB */
 let urlDiscover = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&language=es-ES&api_key=b623b1e7ec090ee229dbf096d96c976c&page=';
 
 
-
-app.get('/cargapeliculas',(req,res) => {
-    const NUMPAG = 41;
+api.get('/cargapeliculas',(req,res) => {
+    const NUMPAG = 20;
     for (let i=1; i< NUMPAG; i++){
         let urlDiscoverpagina = urlDiscover + i.toString();
-        fetch(urlDiscoverpagina)
-            .then(res => res.json())
-            .then(json => {
-                    let pelis_ajb = cargaMongo(json,res);
-                    res.send(pelis_ajb)
-                }
-            )
-            .catch(err => console.error(err));
+        setTimeout(() => {
+            fetch(urlDiscoverpagina)
+                .then(res => res.json())
+                .then(json => {
+                        let pelis_ajb = cargaMongo(json,res);
+                        res.send(pelis_ajb)
+                    }
+                )
+                .catch(err => console.error(err));
+        }, 500);
     }
 
 });
 
 const cargaMongo = (json,res) => {
     let ObjPelicula = {};
-    let peliculasIDs = [];
+
     let pelis = json.results;
 
     pelis.forEach((movie) => {
@@ -107,35 +109,63 @@ const cargaMongo = (json,res) => {
         });
 
         peliculasIDs.push({'id': movie.id});
+        console.log("LONGITUD ARRAY -------- " + peliculasIDs.length);
 
     });
 
-    peliculasIDs.forEach((item) => {
-        let id = item.id;
-        const urlMovieData = `https://api.themoviedb.org/3/movie/${id}?api_key=b623b1e7ec090ee229dbf096d96c976c&language=es-ES`;
-        const urlMovieCreditos = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=b623b1e7ec090ee229dbf096d96c976c`;
+    setTimeout(() => {
+        peliculasIDs.forEach((item) => {
+                let id = item.id;
+                const urlMovieData = `https://api.themoviedb.org/3/movie/${id}?api_key=b623b1e7ec090ee229dbf096d96c976c&language=es-ES`;
+                const urlMovieCreditos = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=b623b1e7ec090ee229dbf096d96c976c`;
+                const urlVideos = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=b623b1e7ec090ee229dbf096d96c976c&language=en-US`;
 
-        fetch(urlMovieData)
-                .then(res => res.json())
-                .then(json => {
-                        let generos = json.genres;
-                        //res.send(generos);
-                        actualizaGeneros(json.id,generos,res);
-                });
+                // fetch(urlMovieData)
+                //         .then(res => res.json())
+                //         .then(json => {
+                //                 let generos = json.genres;
+                //                 //res.send(generos);
+                //                 actualizaGeneros(json.id,generos,res);
+                //         });
 
-        fetch(urlMovieCreditos)
-            .then(res => res.json())
-            .then(json => {
-                let cast = json.cast;
-                let crew = json.crew;
-                cast.splice(4, cast.length - 4);
+                // fetch(urlMovieCreditos)
+                //     .then(res => res.json())
+                //     .then(json => {
+                //         let cast = json.cast;
+                //         let crew = json.crew;
+                //         cast.splice(4, cast.length - 4);
+                //
+                //         actualizaCreditos(json.id,cast,res);
+                //         actualizaDirector(json.id,crew,res);
+                //     });
 
-                actualizaCreditos(json.id,cast,res);
-                actualizaDirector(json.id,crew,res);
-            });
-}
+                // fetch(urlVideos)
+                //        .then(res => res.json())
+                //        .then(json => {
+                //            let videos = json.results[0].key;
+                //            console.log("VIDEO -----   :" + videos);
+                //            //res.send(generos);
+                //            actualizaMovies(json.id,videos,res);
+                //        });
 
-    );
+                async function fetchVideos(urlVideos)
+                {
+                    const res = await fetch(urlVideos);
+                    const data = await res.json();
+                    console.log(data);
+                    let videos = data.results[0].key;
+                    actualizaMovies(data.id,videos,res);
+                    console.log(data.name);
+                }
+
+                fetchVideos(urlVideos);
+
+
+
+            },
+
+        );
+    }, 50);
 
     //console.log(peliculasIDs);
     return peliculasIDs;
@@ -146,6 +176,16 @@ const actualizaGeneros = (id,generos,res) => {
     Pelicula.findOneAndUpdate(query, {$set:{genres: generos}}, function (err,doc) {
         if (err){
             return res.status(500).send({"error": "fallo al actualizar generos"})
+        }
+        //return res.json(generos)
+    });
+}
+
+const actualizaMovies = (id,videos,res) => {
+    let query = {id: id};
+    Pelicula.findOneAndUpdate(query, {$set:{key: videos}}, function (err,doc) {
+        if (err){
+            return res.status(500).send({"error": "fallo al actualizar videos"})
         }
         //return res.json(generos)
     });
@@ -187,9 +227,29 @@ api.get('/peliculas',(req,res) => {
         if (err){
             return res.status(500).send({"error": "fallo"})
         }
-        console.log (pelis);
+        //console.log (pelis);
         return res.json(pelis)
     }).limit(30)
+});
+api.get('/peliculas1',(req,res) => {
+    Pelicula.find(function (err,pelis) {
+        if (err){
+            return res.status(500).send({"error": "fallo"})
+        }
+        //console.log (pelis);
+        return res.json(pelis)
+    })
+});
+api.get('/buscador/:valor',(req,res) => {
+    const valor = req.params.valor;
+    console.log(valor);
+    Pelicula.find( { title : { $regex: `${valor}` } } ,function (err,pelis) {
+        if (err){
+            return res.status(500).send({"error": "fallo"})
+        }
+        //console.log (pelis);
+        return res.json(pelis)
+    })
 });
 
 api.post('/pelicula',(req,res) => {
@@ -211,7 +271,7 @@ api.get('/pelicula/:id',(req,res) => {
         if (err){
             return res.status(500).send({"error": "fallo al consultar pelicula"})
         }
-        console.log (peli);
+        //console.log (peli);
         return res.json(peli)
     })
 });
@@ -220,7 +280,7 @@ api.get('/genero/:id',(req,res) => {
     //console.log(req.params.id);
     let id = parseInt(req.params.id);
     let query = {genre_ids: {'$in': [id]}};
-    console.log(query);
+    //console.log(query);
     Pelicula.find(query, function (err,peli) {
         if (err){
             return res.status(500).send({"error": "fallo al consultar pelicula"})
@@ -237,22 +297,20 @@ api.delete('/pelicula/:id',(req,res) => {
         if (err){
             return res.status(500).send({"error": "fallo al eliminar la película"})
         }
-        console.log (peli);
+        //console.log (peli);
         return res.json(peli)
     })
 });
 
-
 app.put('/pelicula/:id',(req,res) => {
     let id = parseInt(req.params.id);
-
     let mod = req.body;
     let query = {id: id};
     Pelicula.findOneAndUpdate(query, mod, function (err,peli) {
         if (err){
             return res.status(500).send({"error": "fallo"})
         }
-        console.log (peli);
+        //console.log (peli);
         return res.json(peli)
     })
 });

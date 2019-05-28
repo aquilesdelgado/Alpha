@@ -21,7 +21,7 @@
 
   <h2>Editor de películas</h2>
     <form class="form"  #userForm="ngForm">
-    <input class="input" type="search" (keypress)="onKeyPress(buscar.value)" name="buscar" ngModel required #buscar="ngModel" placeholder=”Titulo,Actores” autocomplete="off">
+    <input class="input" type="search" (keyup)="onKeyPress(buscar.value)" name="buscar" ngModel required #buscar="ngModel" placeholder=”Titulo,Actores” autocomplete="off">
         </form>
   <a routerLink="/admin/add/" class="add">
     Añadir Película

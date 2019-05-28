@@ -12,6 +12,7 @@ import {AuthGuard} from './_guards';
 import {RegisterComponent} from './register/register.component';
 import {UsersComponent} from '@app/admin/users/users.component';
 import {EditarperfilComponent} from '@app/editarperfil/editarperfil.component';
+import {CinematecaComponent} from '@app/body/cinemateca/cinemateca.component';
 
 
 const routes: Routes = [
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'admin/users', component: UsersComponent, canActivate: [AuthGuard]},
   {path: 'login' , component: LoginComponent},
   {path: 'register' , component: RegisterComponent},
-  {path: 'editarperfil/:id' , component: EditarperfilComponent}
+  {path: 'editarperfil/:id' , component: EditarperfilComponent},
+  {path: 'alphalist' , component: CinematecaComponent}
 
 ];
 

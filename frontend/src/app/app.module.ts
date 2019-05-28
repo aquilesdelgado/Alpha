@@ -28,6 +28,7 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './admin/users/users.component';
 import { EditarperfilComponent } from './editarperfil/editarperfil.component';
+import { CinematecaComponent } from './body/cinemateca/cinemateca.component';
 
 
 
@@ -57,7 +58,8 @@ import { EditarperfilComponent } from './editarperfil/editarperfil.component';
     AlertComponent,
     RegisterComponent,
     UsersComponent,
-    EditarperfilComponent
+    EditarperfilComponent,
+    CinematecaComponent
   ],
   imports: [
     BrowserModule,

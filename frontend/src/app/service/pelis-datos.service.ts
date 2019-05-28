@@ -17,6 +17,7 @@ export class PelisDatosService {
   url2 = 'https://api.themoviedb.org/3/movie/';
   apikey = '4d1fbdcf538ee0650a9a3cf6ce963c2b';
   urlAPI = 'http://localhost:3000/';
+  urlAPI2 = 'http://localhost:4000/';
 
   constructor(private http: HttpClient) { }
 
@@ -61,6 +62,18 @@ export class PelisDatosService {
   getPelisBuscador(valor) {
     const topPelis = `${this.urlAPI}buscador/${valor}`;
     return this.http.get<any[]>(topPelis);
+  }
+  putAlphaList(idUser, idFilm) {
+    const topPelis = `${this.urlAPI2}agregarfavorita/${idUser}`;
+    return this.http.put(topPelis, { idFilm : `${idFilm}`});
+  }
+  getAlphaList(idUser) {
+    const topPelis = `${this.urlAPI2}agregarfavorita/${idUser}`;
+    return this.http.get<any[]>(topPelis);
+  }
+  deleteFronList(idFilm) {
+    const topPelis = `${this.urlAPI2}agregarfavorita/${idFilm}`;
+    return this.http.delete(topPelis);
   }
 }
 

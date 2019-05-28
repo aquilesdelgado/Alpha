@@ -1,4 +1,4 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {PelisDatosService} from '../../service/pelis-datos.service';
 import {DashjsPlayerComponent} from 'angular-dashjs-player';
@@ -12,6 +12,7 @@ import {falseIfMissing} from 'protractor/built/util';
     styleUrls: ['./detalles.component.scss']
 })
 export class DetallesComponent implements OnInit {
+    usuario = JSON.parse(localStorage.getItem('currentUser'));
     @ViewChild('dashPlayer') dashPlayer: DashjsPlayerComponent;
     id: string;
     movie: any = {};
@@ -22,6 +23,7 @@ export class DetallesComponent implements OnInit {
     idpelis: any;
     verflecha = true;
 
+
     constructor(private activateRoute: ActivatedRoute, private pelisDatos: PelisDatosService) {
         this.activateRoute.params.subscribe(params => {
             this.id = params.id;
@@ -29,11 +31,6 @@ export class DetallesComponent implements OnInit {
             this.pelisDatos.getMovieById(this.id).subscribe(datos => {
                 this.movie = datos;
                 this.youtubeUrl = `${this.youtubePart1}${this.movie.key}${this.youtubePart2}`;
-                // this.pelisDatos.getMovieKey(this.movie.id).subscribe(datos => {
-                //     // @ts-ignore
-                //     this.idpelis = datos.results[0].key;
-                //     this.youtubeUrl = `${this.youtubePart1}${this.idpelis}${this.youtubePart2}`;
-                // });
             });
         });
     }
@@ -57,9 +54,10 @@ export class DetallesComponent implements OnInit {
         this.isLoggedIn = true;
     }
     flechaLoad() {
+        // this.verflecha = true;
         // setTimeout(() => {
         //     this.verflecha = false;
-        // }, 3000);
+        // }, 4000);
     }
 
     flecha() {
@@ -69,6 +67,10 @@ export class DetallesComponent implements OnInit {
         //         this.verflecha = false;
         //     }, 3000);
         // }
+    }
+
+    guardarPeli() {
+        this.pelisDatos.putAlphaList(this.usuario._id, this.id);
     }
 }
 

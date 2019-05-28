@@ -62,6 +62,6 @@ export class PreviewPelisComponent implements OnInit {
     }
     checklogged() {
         setTimeout(() => this.isLoggedIn = true
-            , 130000);
+            , 86000);
     }
 }

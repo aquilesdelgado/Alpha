@@ -20,7 +20,7 @@ nav.Cabecera {
     align-items: center;
     align-content: center;
     margin: 0;
-    padding: 0;
+    padding-left: 3%;
     li{
 
       list-style: none;
@@ -55,7 +55,8 @@ nav.Cabecera {
     align-items: center;
     align-content: center;
     position: absolute;
-    right: 7vw;
+    right: 0;
+    margin-right: 8%;
     vertical-align: middle;
 
       input{

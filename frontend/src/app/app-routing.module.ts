@@ -10,6 +10,8 @@ import {AddmovieComponent} from './admin/addmovie/addmovie.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './_guards';
 import {RegisterComponent} from './register/register.component';
+import {UsersComponent} from '@app/admin/users/users.component';
+import {EditarperfilComponent} from '@app/editarperfil/editarperfil.component';
 
 
 const routes: Routes = [
@@ -19,8 +21,11 @@ const routes: Routes = [
   {path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
   {path: 'admin/edit/:id' , component: EditComponent, canActivate: [AuthGuard]},
   {path: 'admin/add', component: AddmovieComponent, canActivate: [AuthGuard]},
+  {path: 'admin/users', component: UsersComponent, canActivate: [AuthGuard]},
   {path: 'login' , component: LoginComponent},
-  {path: 'register' , component: RegisterComponent}
+  {path: 'register' , component: RegisterComponent},
+  {path: 'editarperfil/:id' , component: EditarperfilComponent}
+
 ];
 
 @NgModule({

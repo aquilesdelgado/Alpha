@@ -19,14 +19,16 @@ nav.Cabecera ul li {
   list-style: none;
   width: auto;
   vertical-align: middle;
+  letter-spacing: 2px;
+  font-size: 1.4rem;
+  color: #ff6b03;
   margin-left: 2rem;
 }
 nav.Cabecera ul li a {
   font-family: Roboto;
-  letter-spacing: 2px;
+  text-decoration: none;
   font-size: 1.4rem;
   color: white;
-  text-decoration: none;
   cursor: pointer;
 }
 nav.Cabecera ul li a img {

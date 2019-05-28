@@ -1,0 +1,17 @@
+<section class="detalles">
+  <div>
+    <div class="peliculas1" >
+      <h2>Administración usuarios de Alpha Streaming:</h2>
+      <ul>
+        <li *ngFor="let user of users">
+          <a (click)="deleteUser(user.id)" alt="Eliminar usuario"><span class="basura"><i class="far fa-trash-alt"></i></span></a>
+          <a routerLink="/editarperfil/{{user.id}}">
+          {{user.username}}
+          </a>
+            ({{user.firstName}} {{user.lastName}})
+
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

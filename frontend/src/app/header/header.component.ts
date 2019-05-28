@@ -7,6 +7,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  usuario = JSON.parse(localStorage.getItem('currentUser'));
 
   constructor(private router: Router) {
   }

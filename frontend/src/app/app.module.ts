@@ -26,6 +26,8 @@ import { ReactiveFormsModule }    from '@angular/forms';
 import { AlertComponent } from './_components';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { RegisterComponent } from './register/register.component';
+import { UsersComponent } from './admin/users/users.component';
+import { EditarperfilComponent } from './editarperfil/editarperfil.component';
 
 
 
@@ -53,7 +55,9 @@ import { RegisterComponent } from './register/register.component';
     EditComponent,
     AddmovieComponent,
     AlertComponent,
-    RegisterComponent
+    RegisterComponent,
+    UsersComponent,
+    EditarperfilComponent
   ],
   imports: [
     BrowserModule,

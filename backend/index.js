@@ -47,7 +47,7 @@ api.get('/',(req,res) => {
 api.listen(3000);
 app.listen(4000);
 
-mongoose.connect('mongodb://127.0.0.1:27017/alpha');
+mongoose.connect('mongodb://localhost:27017/alpha', { useNewUrlParser: true });
 
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
@@ -65,7 +65,7 @@ let urlDiscover = 'https://api.themoviedb.org/3/discover/movie?sort_by=popularit
 
 
 api.get('/cargapeliculas',(req,res) => {
-    const NUMPAG = 20;
+    const NUMPAG = 36;
     for (let i=1; i< NUMPAG; i++){
         let urlDiscoverpagina = urlDiscover + i.toString();
         setTimeout(() => {
@@ -96,7 +96,7 @@ const cargaMongo = (json,res) => {
                 backdrop_path: movie.backdrop_path,
                 genre_ids: movie.genre_ids,
                 runtime: movie.runtime,
-                year: movie.year,
+                year: movie.release_date,
                 vote_average: movie.vote_average,
                 overview: movie.overview
             }
@@ -139,26 +139,27 @@ const cargaMongo = (json,res) => {
             //         actualizaDirector(json.id,crew,res);
             //     });
 
-             // fetch(urlVideos)
-             //        .then(res => res.json())
-             //        .then(json => {
-             //            let videos = json.results[0].key;
-             //            console.log("VIDEO -----   :" + videos);
-             //            //res.send(generos);
-             //            actualizaMovies(json.id,videos,res);
-             //        });
+            // fetch(urlVideos)
+            //        .then(res => res.json())
+            //        .then(json => {
+            //            let videos = json.results[0].key;
+            //            console.log("VIDEO -----   :" + videos);
+            //            //res.send(generos);
+            //            actualizaMovies(json.id,videos,res);
+            //        });
 
-                async function fetchVideos(urlVideos)
-                {
-                    const res = await fetch(urlVideos);
-                    const data = await res.json();
-                    console.log(data);
-                    let videos = data.results[0].key;
-                    actualizaMovies(data.id,videos,res);
-                    console.log(data.name);
-                }
+            async function fetchVideos(urlVideos)
+            {
+                const res = await fetch(urlVideos);
+                const data = await res.json();
+                console.log(data);
+                let videos = data.results[0].key;
+                actualizaMovies(data.id,videos,res);
+                console.log(data.name);
+            }
 
-                fetchVideos(urlVideos);
+            fetchVideos(urlVideos);
+
 
 
 
@@ -243,7 +244,7 @@ api.get('/peliculas1',(req,res) => {
 api.get('/buscador/:valor',(req,res) => {
     const valor = req.params.valor;
     console.log(valor);
-    Pelicula.find( { title : { $regex: `${valor}` } } ,function (err,pelis) {
+    Pelicula.find( { title : { $regex: `${valor}` , $options: 'i'} } ,function (err,pelis) {
         if (err){
             return res.status(500).send({"error": "fallo"})
         }

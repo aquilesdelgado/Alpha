@@ -24,8 +24,8 @@ export class AdminComponent implements OnInit {
 
   delete(id: string) {
 
-    //this.router.navigate(['/delete', id]);
-    let url = `http://localhost:3000/pelicula/${id}`;
+    // this.router.navigate(['/delete', id]);
+    const url = `http://localhost:3000/pelicula/${id}`;
     console.log(url);
     fetch(url, {
       method: 'DELETE', // or 'PUT'
@@ -43,5 +43,6 @@ export class AdminComponent implements OnInit {
     } else {
       this.ngOnInit();
     }
+    this.ngOnInit();
   }
 }

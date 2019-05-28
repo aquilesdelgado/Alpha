@@ -7,8 +7,10 @@
             <h2 class="peliculas__titulo">{{movie.title }}</h2>
             <p class="peliculas__desc">{{movie.overview }}<br></p>
         </div>
+
         <button class="bottonBack" (click)="goBack()">Back</button>
         <button class="bottonTrailer" (click)="goTrailer()"> Ver Trailer</button>
+        <button class="bottonGuardar" (click)="guardarPeli()">Agregar a Colección</button>
     </div>
     </ng-template>
 
@@ -17,8 +19,8 @@
             mozallowfullscreen="mozallowfullscreen"
             msallowfullscreen="msallowfullscreen"
             oallowfullscreen="oallowfullscreen"
-            webkitallowfullscreen="webkitallowfullscreen">
+            webkitallowfullscreen="webkitallowfullscreen" >
     </iframe>
-    <button *ngIf="verflecha" class="flecha" (click)="loggedOut()">&larr;</button>
+    <button *ngIf="verflecha" id="flecha" class="flecha" (click)="loggedOut()">&larr;</button>
 </ng-template>
 </section>

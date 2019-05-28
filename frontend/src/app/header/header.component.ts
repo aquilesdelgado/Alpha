@@ -24,10 +24,6 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  guardar(param: string) {
-    this.router.navigate(['/searchresult', param]);
-  }
-
   onKeyPress(param: any) {
     // this.values += event.target.value;
     if (param.length > 0) {

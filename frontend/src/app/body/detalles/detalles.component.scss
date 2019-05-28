@@ -66,6 +66,26 @@ section {
       transition: 0.2s;
       color: rgb(255, 107, 3);
     }
+    button.bottonGuardar {
+      position: absolute;
+      left: 59%;
+      bottom: 4%;
+      width: 10vw;
+      height: 4vw;
+      background-color: transparent;
+      color: white;
+      font-size: 2rem;
+      border-radius: 30px;
+      border: 1px solid white;
+    }
+
+    button:hover {
+      opacity: 1;
+      border: 1px solid white;
+      background-color: transparent;
+      transition: 0.2s;
+      color: rgb(255, 107, 3);
+    }
   }
 
   //div.divVideo {

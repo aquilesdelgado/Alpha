@@ -8,7 +8,7 @@ const PeliculaSchema = new mongoose.Schema({
     backdrop_path: String,
     genre_ids: Array,
     runtime: Number,
-    year: Number,
+    year: String,
     vote_average: Number,
     overview: String,
     genres: Array,

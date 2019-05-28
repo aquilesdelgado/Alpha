@@ -74,10 +74,12 @@ section button.flecha {
   font-size: 4rem;
   background-color: transparent;
   font-family: "Montserrat", sans-serif;
+  opacity: 0.3;
+  transition: 0.3s;
 }
 section button.flecha:hover {
   color: #ff6b03;
-  transition: 0.3s;
+  opacity: 1;
 }
 
 /*# sourceMappingURL=detalles.component.css.map */

@@ -1,12 +1,19 @@
+
 nav.Cabecera {
   align-items: center;
-  height: 68px;
   display: flex;
   position: relative;
   width: 100vw;
+  height: 4vw;
   margin-top: 1rem;
   vertical-align: middle;
-  background-color: transparentize(#484848,0.5);
+  //background-color: transparentize(#484848,0.5);
+  background: rgba(48,48,48,0);
+  padding: 10px;
+  -webkit-transition: all ease-out .5s;
+  -moz-transition: all ease-out .5s;
+  -o-transition: all ease-out .5s;
+  transition: all ease-out .5s;
 
   ul{
     display: flex;
@@ -76,7 +83,6 @@ nav.Cabecera {
       width: 30vw;
       height: 3vw;
       border: solid white 1px;
-      transition: 0.8s;
       background-position: left;
     }
     input:focus{

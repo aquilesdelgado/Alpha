@@ -25,6 +25,11 @@ export class PelisDatosService {
     const topPelis = `${this.urlAPI}peliculas/`;
     return this.http.get<any[]>(topPelis);
   }
+  getPelisAdmin() {
+    //const topPelis = `${this.url}discover/movie?sort_by=popularity.desc&api_key=${this.apikey}`;
+    const topPelis = `${this.urlAPI}peliculas1/`;
+    return this.http.get<any[]>(topPelis);
+  }
   getMovieById(idpel) {
     const idpelis = `${this.urlAPI}pelicula/${idpel}`;
     return this.http.get<any[]>(idpelis);
@@ -51,6 +56,10 @@ export class PelisDatosService {
   }
   getMovieKey(id){
     const topPelis = `${this.url2}${id}/videos?api_key=${this.apikey}`;
+    return this.http.get<any[]>(topPelis);
+  }
+  getPelisBuscador(valor) {
+    const topPelis = `${this.urlAPI}buscador/${valor}`;
     return this.http.get<any[]>(topPelis);
   }
 }

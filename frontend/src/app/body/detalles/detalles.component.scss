@@ -87,11 +87,12 @@ section {
       font-size: 4rem;
       background-color: transparent;
       font-family: 'Montserrat', sans-serif;
-
+      opacity: 0.3;
+      transition: 0.3s;
     }
     button.flecha:hover{
       color: rgb(255, 107, 3);
-      transition: 0.3s;
+      opacity: 1;
     }
   //}
 }

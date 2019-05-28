@@ -22,7 +22,7 @@ api.use(bodyParser.json());
 
 app.use(cors({
     origin: 'http://localhost:4200'
-  }));
+}));
 
 api.use(cors({
     origin: 'http://localhost:4200'
@@ -114,52 +114,52 @@ const cargaMongo = (json,res) => {
     });
 
     setTimeout(() => {
-    peliculasIDs.forEach((item) => {
-        let id = item.id;
-        const urlMovieData = `https://api.themoviedb.org/3/movie/${id}?api_key=b623b1e7ec090ee229dbf096d96c976c&language=es-ES`;
-        const urlMovieCreditos = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=b623b1e7ec090ee229dbf096d96c976c`;
-        const urlVideos = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=b623b1e7ec090ee229dbf096d96c976c&language=en-US`;
+        peliculasIDs.forEach((item) => {
+            let id = item.id;
+            const urlMovieData = `https://api.themoviedb.org/3/movie/${id}?api_key=b623b1e7ec090ee229dbf096d96c976c&language=es-ES`;
+            const urlMovieCreditos = `https://api.themoviedb.org/3/movie/${id}/credits?api_key=b623b1e7ec090ee229dbf096d96c976c`;
+            const urlVideos = `https://api.themoviedb.org/3/movie/${id}/videos?api_key=b623b1e7ec090ee229dbf096d96c976c&language=en-US`;
 
-        // fetch(urlMovieData)
-        //         .then(res => res.json())
-        //         .then(json => {
-        //                 let generos = json.genres;
-        //                 //res.send(generos);
-        //                 actualizaGeneros(json.id,generos,res);
-        //         });
+            // fetch(urlMovieData)
+            //         .then(res => res.json())
+            //         .then(json => {
+            //                 let generos = json.genres;
+            //                 //res.send(generos);
+            //                 actualizaGeneros(json.id,generos,res);
+            //         });
 
-        // fetch(urlMovieCreditos)
-        //     .then(res => res.json())
-        //     .then(json => {
-        //         let cast = json.cast;
-        //         let crew = json.crew;
-        //         cast.splice(4, cast.length - 4);
-        //
-        //         actualizaCreditos(json.id,cast,res);
-        //         actualizaDirector(json.id,crew,res);
-        //     });
+            // fetch(urlMovieCreditos)
+            //     .then(res => res.json())
+            //     .then(json => {
+            //         let cast = json.cast;
+            //         let crew = json.crew;
+            //         cast.splice(4, cast.length - 4);
+            //
+            //         actualizaCreditos(json.id,cast,res);
+            //         actualizaDirector(json.id,crew,res);
+            //     });
 
-         // fetch(urlVideos)
-         //        .then(res => res.json())
-         //        .then(json => {
-         //            let videos = json.results[0].key;
-         //            console.log("VIDEO -----   :" + videos);
-         //            //res.send(generos);
-         //            actualizaMovies(json.id,videos,res);
-         //        });
+             // fetch(urlVideos)
+             //        .then(res => res.json())
+             //        .then(json => {
+             //            let videos = json.results[0].key;
+             //            console.log("VIDEO -----   :" + videos);
+             //            //res.send(generos);
+             //            actualizaMovies(json.id,videos,res);
+             //        });
 
-            async function fetchVideos(urlVideos)
-            {
-                const res = await fetch(urlVideos);
-                const data = await res.json();
-                console.log(data);
-                let videos = data.results[0].key;
-                actualizaMovies(data.id,videos,res);
-                console.log(data.name);
-            }
+                async function fetchVideos(urlVideos)
+                {
+                    const res = await fetch(urlVideos);
+                    const data = await res.json();
+                    console.log(data);
+                    let videos = data.results[0].key;
+                    actualizaMovies(data.id,videos,res);
+                    console.log(data.name);
+                }
 
-            fetchVideos(urlVideos);
-
+                fetchVideos(urlVideos);
+    
 
 
 },
@@ -230,6 +230,26 @@ api.get('/peliculas',(req,res) => {
         //console.log (pelis);
         return res.json(pelis)
     }).limit(30)
+});
+api.get('/peliculas1',(req,res) => {
+    Pelicula.find(function (err,pelis) {
+        if (err){
+            return res.status(500).send({"error": "fallo"})
+        }
+        //console.log (pelis);
+        return res.json(pelis)
+    })
+});
+api.get('/buscador/:valor',(req,res) => {
+    const valor = req.params.valor;
+    console.log(valor);
+    Pelicula.find( { title : { $regex: `${valor}` } } ,function (err,pelis) {
+        if (err){
+            return res.status(500).send({"error": "fallo"})
+        }
+        //console.log (pelis);
+        return res.json(pelis)
+    })
 });
 
 api.post('/pelicula',(req,res) => {

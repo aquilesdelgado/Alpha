@@ -65,9 +65,7 @@ import { EditarperfilComponent } from './editarperfil/editarperfil.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    // SlickCarouselModule,
-    SlickModule.forRoot(),
-
+    SlickModule.forRoot()
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],

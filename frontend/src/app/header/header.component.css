@@ -1,12 +1,17 @@
 nav.Cabecera {
   align-items: center;
-  height: 68px;
   display: flex;
   position: relative;
   width: 100vw;
+  height: 4vw;
   margin-top: 1rem;
   vertical-align: middle;
-  background-color: rgba(72, 72, 72, 0.5);
+  background: rgba(48, 48, 48, 0);
+  padding: 10px;
+  -webkit-transition: all ease-out 0.5s;
+  -moz-transition: all ease-out 0.5s;
+  -o-transition: all ease-out 0.5s;
+  transition: all ease-out 0.5s;
 }
 nav.Cabecera ul {
   display: flex;
@@ -69,7 +74,6 @@ nav.Cabecera form input:hover {
   width: 30vw;
   height: 3vw;
   border: solid white 1px;
-  transition: 0.8s;
   background-position: left;
 }
 nav.Cabecera form input:focus {

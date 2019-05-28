@@ -1,0 +1,85 @@
+section div {
+  padding-top: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
+  display: inline-flex;
+  background-position: center;
+  position: relative;
+}
+section div img {
+  float: left;
+  margin: 2%;
+}
+section div div {
+  display: block;
+}
+section div div h2 {
+  padding-top: 5%;
+  color: #ff6b03;
+  font-family: Roboto;
+  letter-spacing: 2px;
+  font-size: 3rem;
+}
+section div div p {
+  font-family: Roboto;
+  letter-spacing: 2px;
+  font-size: 2rem;
+  color: white;
+  padding-top: 5%;
+}
+section div button.bottonBack {
+  position: absolute;
+  left: 41%;
+  bottom: 4%;
+  width: 6vw;
+  height: 4vw;
+  background-color: transparent;
+  color: white;
+  font-size: 2rem;
+  border-radius: 30px;
+  border: 1px solid white;
+}
+section div button.bottonTrailer {
+  position: absolute;
+  left: 49%;
+  bottom: 4%;
+  width: 8vw;
+  height: 4vw;
+  background-color: transparent;
+  color: white;
+  font-size: 2rem;
+  border-radius: 30px;
+  border: 1px solid white;
+}
+section div button:hover {
+  opacity: 1;
+  border: 1px solid white;
+  background-color: transparent;
+  transition: 0.2s;
+  color: #ff6b03;
+}
+section iframe {
+  width: 100%;
+  position: absolute;
+  z-index: 5;
+}
+section button.flecha {
+  position: absolute;
+  z-index: 6;
+  left: 2%;
+  top: 6%;
+  border-radius: 50px;
+  border: none;
+  color: white;
+  font-size: 4rem;
+  background-color: transparent;
+  font-family: "Montserrat", sans-serif;
+  opacity: 0.3;
+  transition: 0.3s;
+}
+section button.flecha:hover {
+  color: #ff6b03;
+  opacity: 1;
+}
+
+/*# sourceMappingURL=detalles.component.css.map */

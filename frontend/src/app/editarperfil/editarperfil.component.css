@@ -22,6 +22,10 @@ section div div.peliculas1 h2 {
   letter-spacing: 2px;
   font-size: 2.8rem;
 }
+section div div.peliculas1 h2 span {
+  color: white;
+  font-size: inherit;
+}
 section div div.peliculas1 p {
   font-family: Roboto;
   letter-spacing: 2px;
@@ -92,4 +96,4 @@ section div div.peliculas1 div button:hover {
   background: rgba(212, 207, 207, 0.45);
 }
 
-/*# sourceMappingURL=edit.component.css.map */
+/*# sourceMappingURL=editarperfil.component.css.map */

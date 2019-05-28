@@ -26,16 +26,16 @@ nav.Cabecera {
       list-style: none;
       width: auto;
       vertical-align: middle;
-
+      letter-spacing: 2px;
+      font-size: 1.4rem;
+      color: rgb(255, 107, 3);
       margin-left: 2rem;
+
       a{
-
         font-family: Roboto;
-        letter-spacing: 2px;
-
+        text-decoration: none;
         font-size: 1.4rem;
         color: white;
-        text-decoration: none;
         cursor: pointer;
         img{
           width: 10vw;

@@ -1,0 +1,61 @@
+
+body {
+  background-color: #111;
+}
+section{
+  background-color: transparentize(#484848,0.35);
+  padding: 8% 5% 5% 5%;
+
+  h2 {
+    padding-left: 2%;
+    color: rgb(255, 107, 3);
+    font-family: Roboto;
+    letter-spacing: 2px;
+    font-size: 3rem;
+  }
+  div{
+    background-position: center;
+    img{
+      float: left;
+      margin: 2%;
+    }
+    div.peliculas1 {
+
+      background-blend-mode: multiply;
+
+      ul li {
+        font-family: Roboto;
+        letter-spacing: 2px;
+        font-size: 2rem;
+        color: white;
+        padding: 1rem;
+        list-style: none;
+
+        a {
+          text-decoration: none;
+          color: white;
+          font-size: inherit;
+        }
+
+        span.basura i {
+          font-size: 2.5em;
+          padding-right: 2em;
+          cursor: pointer;
+        }
+      }
+
+      p.info {
+        font-family: Roboto;
+        letter-spacing: 2px;
+        font-size: 1.6rem;
+        padding: 1.2rem;
+
+
+      }
+      p.info a:hover {
+        color: antiquewhite;
+      }
+
+    }
+  }
+}

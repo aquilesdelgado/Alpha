@@ -28,11 +28,12 @@ export class DetallesComponent implements OnInit {
 
             this.pelisDatos.getMovieById(this.id).subscribe(datos => {
                 this.movie = datos;
-
-                    // @ts-ignore
-                    this.idpelis = this.movie.key;
-                    this.youtubeUrl = `${this.youtubePart1}${this.idpelis}${this.youtubePart2}`;
-
+                this.youtubeUrl = `${this.youtubePart1}${this.movie.key}${this.youtubePart2}`;
+                // this.pelisDatos.getMovieKey(this.movie.id).subscribe(datos => {
+                //     // @ts-ignore
+                //     this.idpelis = datos.results[0].key;
+                //     this.youtubeUrl = `${this.youtubePart1}${this.idpelis}${this.youtubePart2}`;
+                // });
             });
         });
     }

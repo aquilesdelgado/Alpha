@@ -1,0 +1,42 @@
+<section class="detalles">
+  <div *ngIf="user">
+    <div class="peliculas1">
+
+
+      <div>
+        <h2 class="peliculas__titulo">Editar usuario  <span>{{user.username }}</span></h2>
+
+        <form (ngSubmit)="guardarUsuario(userForm)" #userForm="ngForm">
+          <div>
+            <label for="username">Username</label>
+            <input name="username" class="form-control mr-sm-2"  placeholder={{user.username}} value={{user.username}}  ngModel autocomplete="off">
+            <input name="id" type="hidden" value={{user.id}}  ngModel>
+          </div>
+
+          <div>
+            <label for="name">Nombre</label>
+            <input name="firstname" class="form-control mr-sm-2"  placeholder={{user.firstName}} value={{user.firstName}}  ngModel autocomplete="off">
+          </div>
+
+          <div>
+            <label for="lastname">Apellidos</label>
+            <input name="lastname" class="form-control mr-sm-2"  placeholder={{user.lastName}} value={{user.lastName}}  ngModel autocomplete="off">
+          </div>
+
+          <div>
+            <label for="password">Contraseña</label>
+            <input name="password" class="form-control mr-sm-2"  placeholder={{user.password}} value={{user.password}}  ngModel autocomplete="off">
+          </div>
+
+
+          <p class="peliculas__desc">
+            <button type="submit" class="editar" >Guardar Cambios</button>
+          </p>
+        </form>
+
+
+      </div>
+    </div>
+
+  </div>
+</section>

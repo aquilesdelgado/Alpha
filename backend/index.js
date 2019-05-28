@@ -69,14 +69,14 @@ api.get('/cargapeliculas',(req,res) => {
     for (let i=1; i< NUMPAG; i++){
         let urlDiscoverpagina = urlDiscover + i.toString();
         setTimeout(() => {
-            fetch(urlDiscoverpagina)
-                .then(res =>  res.json())
-                .then(json => {
-                        let pelis_ajb = cargaMongo(json,res);
-                        res.send(pelis_ajb)
-                    }
-                )
-                .catch(err => console.error(err));
+        fetch(urlDiscoverpagina)
+            .then(res => res.json())
+            .then(json => {
+                    let pelis_ajb = cargaMongo(json,res);
+                    res.send(pelis_ajb)
+                }
+            )
+            .catch(err => console.error(err));
         }, 500);
     }
 
@@ -162,9 +162,9 @@ const cargaMongo = (json,res) => {
 
 
 
-            },
+},
 
-        );
+    );
     }, 50);
 
     //console.log(peliculasIDs);

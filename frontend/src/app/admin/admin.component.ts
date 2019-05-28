@@ -40,6 +40,8 @@ export class AdminComponent implements OnInit {
         this.peliculas = datos;
       });
       console.log(this.peliculas);
+    } else {
+      this.ngOnInit();
     }
     this.ngOnInit();
   }

@@ -22,13 +22,14 @@ import { AdminComponent } from './admin/admin.component';
 import { EditComponent } from './admin/edit/edit.component';
 import { AddmovieComponent } from './admin/addmovie/addmovie.component';
 import { JwtModule } from '@auth0/angular-jwt';
-import { ReactiveFormsModule }    from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 import { AlertComponent } from './_components';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { RegisterComponent } from './register/register.component';
 import { UsersComponent } from './admin/users/users.component';
 import { EditarperfilComponent } from './editarperfil/editarperfil.component';
 import { CinematecaComponent } from './body/cinemateca/cinemateca.component';
+import { PortadaComponent } from './portada/portada.component';
 
 
 
@@ -43,9 +44,7 @@ import { CinematecaComponent } from './body/cinemateca/cinemateca.component';
     HeaderComponent,
     BodyComponent,
     PreviewPelisComponent,
-
     SlidersComponent,
-
     AddImagePipe,
     DetallesComponent,
     ImgenDetallesPipe,
@@ -59,7 +58,8 @@ import { CinematecaComponent } from './body/cinemateca/cinemateca.component';
     RegisterComponent,
     UsersComponent,
     EditarperfilComponent,
-    CinematecaComponent
+    CinematecaComponent,
+    PortadaComponent
   ],
   imports: [
     BrowserModule,

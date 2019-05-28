@@ -1,0 +1,12 @@
+app-header {
+  position: fixed;
+  z-index: 3;
+}
+
+app-body {
+  position: relative;
+  top: 0px;
+  z-index: 0;
+}
+
+/*# sourceMappingURL=app.component.css.map */

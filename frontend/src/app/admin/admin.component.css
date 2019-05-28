@@ -13,7 +13,10 @@ section h2 {
   letter-spacing: 2px;
   font-size: 3rem;
 }
-section input {
+section div {
+  position: relative;
+}
+section div input {
   position: absolute;
   right: 12%;
   width: 18vw;
@@ -30,7 +33,7 @@ section input {
   background-position: right;
   border: 1px solid white;
 }
-section a.add {
+section div a.add {
   display: block;
   width: 15%;
   margin: 2rem 0;
@@ -46,7 +49,7 @@ section a.add {
   z-index: 2;
   text-transform: uppercase;
 }
-section a.add:hover {
+section div a.add:hover {
   background: rgba(212, 207, 207, 0.45);
 }
 section div {

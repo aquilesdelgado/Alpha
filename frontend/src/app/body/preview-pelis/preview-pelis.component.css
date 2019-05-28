@@ -3,23 +3,26 @@ div.completo {
 }
 div.completo div.description {
   position: absolute;
-  z-index: 1;
+  z-index: 2;
   margin-left: 5%;
-  bottom: 4%;
+  bottom: 8%;
+  width: 60%;
 }
 div.completo div.description h1 {
+  z-index: 1;
   font-size: 4rem;
   color: #ff6b03;
   font-family: Roboto;
 }
 div.completo div.description div {
-  width: 40%;
+  width: 80%;
+  z-index: 1;
 }
 div.completo div.description div h2 {
   margin-top: 2%;
   color: white;
   font-family: Roboto;
-  font-size: 1.5rem;
+  font-size: 2rem;
 }
 div.completo section {
   position: relative;

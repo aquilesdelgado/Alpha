@@ -13,6 +13,23 @@ section h2 {
   letter-spacing: 2px;
   font-size: 3rem;
 }
+section input {
+  position: absolute;
+  right: 12%;
+  width: 18vw;
+  height: 3vw;
+  outline: none;
+  border-radius: 0;
+  border: transparent;
+  vertical-align: middle;
+  font-size: 1.4rem;
+  color: white;
+  background: url("../../assets/images/lupa.png") no-repeat scroll 0 0 transparent;
+  background-size: 2.5vw;
+  padding: 5px 5px 5px 33px;
+  background-position: right;
+  border: 1px solid white;
+}
 section a.add {
   display: block;
   width: 15%;

@@ -30,6 +30,7 @@ import { UsersComponent } from './admin/users/users.component';
 import { EditarperfilComponent } from './editarperfil/editarperfil.component';
 import { CinematecaComponent } from './body/cinemateca/cinemateca.component';
 import { PortadaComponent } from './portada/portada.component';
+import { FooterComponent } from './footer/footer.component';
 
 
 
@@ -59,7 +60,8 @@ import { PortadaComponent } from './portada/portada.component';
     UsersComponent,
     EditarperfilComponent,
     CinematecaComponent,
-    PortadaComponent
+    PortadaComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

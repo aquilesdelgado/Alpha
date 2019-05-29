@@ -1,5 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
+import {AuthenticationService} from '@app/_services';
 
 @Component({
   selector: 'app-header',
@@ -17,7 +18,7 @@ export class HeaderComponent implements OnInit {
       }, 3000);
   }
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
   }
 
   ngOnInit() {
@@ -30,4 +31,9 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['/searchresult', param]);
     }
   }
+
+    logout() {
+        this.authenticationService.logout();
+      this.router.navigate(['/login']);
+    }
 }

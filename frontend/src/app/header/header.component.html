@@ -4,6 +4,7 @@
         <li><a routerLink="home">Inicio</a></li>
 <!--        <li><a routerLink="alphalist">Mi cinemateca</a></li>-->
       <li>Bienvenido {{ usuario.username}}</li>
+        <li (click)="logout()" class="logout">Logout</li>
     </ul>
     <form class="form"  #userForm="ngForm">
         <input class="input" type="search" (keyup)="onKeyPress(buscar.value)" name="buscar" ngModel required #buscar="ngModel" placeholder=”Titulo,Actores” autocomplete="off">

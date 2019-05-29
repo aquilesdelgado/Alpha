@@ -1,17 +1,5 @@
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <title></title>
-
-  <meta name="viewport"
-    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-</head>
-
-<body>
-  <footer>
+ <footer *ngIf="router.url != '/' && router.url != '/login' && router.url != '/register' ">
 
     <div class="container-footer-all">
 
@@ -102,6 +90,3 @@
 
   </footer>
 
-</body>
-
-</html>

@@ -1,0 +1,17 @@
+import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer} from '@angular/platform-browser';
+
+@Pipe({
+  name: 'safeUrl'
+})
+export class SafePipe implements PipeTransform {
+
+  urlImage = 'https://www.youtube.com/embed/';
+
+  constructor(private sanitizer: DomSanitizer) {}
+  transform(url) {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
+}
+
+

@@ -1,0 +1,46 @@
+
+<!--
+<div class="container">
+  <div  class="card-columns">
+
+    <div *ngFor="let peli of peliculas" class="card" >
+      <a routerLink="/edit/{{peli.id}}">
+      <img class="card-img-top" [src]="peli.backdrop_path | addImage"/>
+      </a>
+      <div class="card-body d-flex flex-column">
+        <h4 class="card-title text-primary" id="titulo"><a href="../body/edit/{{peli.id}}">{{peli.title}}</a></h4>
+        <button class="btn btn-secondary" (click)="editar(peli.id)">Editar</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+-->
+
+<section class="detalles">
+
+  <h2>Editor de películas</h2>
+
+    <div>
+        <form class="form"  #userForm="ngForm">
+        <input class="input" type="search" (keyup)="onKeyPress(buscar.value)" name="buscar" ngModel required #buscar="ngModel" placeholder=”Titulo,Actores” autocomplete="off">
+        </form>
+        <a routerLink="/admin/add/" class="add">
+        Añadir Película
+        </a>
+    </div>
+
+   <div *ngFor="let peli of peliculas">
+    <div class="peliculas1" >
+
+
+    <p class="info">
+      <!--<a routerLink="/delete/{{peli.id}}"> <span class="basura"><i class="far fa-trash-alt"></i></span> </a>-->
+      <a (click)="delete(peli.id)" alt="Eliminar película"><span class="basura"><i class="far fa-trash-alt"></i></span></a>
+      <a routerLink="/admin/edit/{{peli.id}}">
+      {{peli.title}}
+      </a>
+    </p>
+    </div>
+   </div>
+</section>

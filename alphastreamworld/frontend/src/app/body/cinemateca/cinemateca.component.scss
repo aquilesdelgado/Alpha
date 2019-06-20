@@ -1,0 +1,84 @@
+section{
+  margin-left: 6rem;
+  margin-right: 6rem;
+  h1{
+    padding-top: 15%;
+    font-size: 3rem;
+    color: rgb(255, 107, 3);
+    font-family: Roboto;
+  }
+  div.carrousel{
+      margin-top: 5%;
+  ngx-slick {
+    div {
+      position: relative;
+      margin-right: 2rem;
+      list-style: none;
+      display: grid;
+      padding-right: 4px;
+      width: 22%;
+      justify-content: space-between;
+      border: black 3px;
+
+      img {
+        box-sizing: content-box;
+        width: auto;
+        height: 231px;
+      }
+
+      span.basura i {
+        position: absolute;
+        font-size: 2.5em;
+        padding-right: 2em;
+        cursor: pointer;
+        left: 0;
+        bottom: 0;
+        color: white;
+        transition: 0.3s;
+      }
+      span.basura i:hover {
+        color: rgb(255, 107, 3);
+      }
+
+
+      button {
+        border-radius: 30px;
+        margin: 20px;
+        font-size: 1.2rem;
+        width: 100px;
+      }
+
+      button:hover {
+        background-color: #9c9c9c;
+        color: #ffffff;
+        transform: scale(1.1);
+        transition: 0.3s;
+      }
+
+      a {
+        cursor: pointer;
+        width: auto;
+      }
+
+      a:hover {
+        transform: scale(1.1);
+        transition: 0.3s;
+      }
+    }
+   }
+  }
+}
+@media screen and (max-width: 480px) {
+  section{
+    width: 90%;
+    ngx-slick {
+      div {
+        width: 90%;
+
+        img {
+
+        }
+      }
+    }
+  }
+}

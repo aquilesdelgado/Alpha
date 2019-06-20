@@ -1,0 +1,53 @@
+div.completo {
+  position: relative;
+}
+div.completo div.description {
+  position: absolute;
+  z-index: 2;
+  margin-left: 5%;
+  bottom: 8%;
+  width: 60%;
+}
+div.completo div.description h1 {
+  z-index: 1;
+  font-size: 4rem;
+  color: #ff6b03;
+  font-family: Roboto;
+}
+div.completo div.description div {
+  width: 80%;
+  z-index: 1;
+}
+div.completo div.description div h2 {
+  margin-top: 2%;
+  color: white;
+  font-family: Roboto;
+  font-size: 2rem;
+}
+div.completo section {
+  position: relative;
+  z-index: 0;
+}
+div.completo section div {
+  position: relative;
+}
+div.completo section div div.divPreview {
+  width: 100%;
+  height: 50vw;
+  overflow: hidden;
+}
+div.completo section div div.divPreview iframe {
+  width: 100%;
+  height: 100%;
+}
+div.completo section div div.peliculas1 {
+  padding-top: 6.5%;
+  position: relative;
+  left: 65.5%;
+  width: 40%;
+}
+div.completo section div div.peliculas1 img {
+  max-width: 80%;
+}
+
+/*# sourceMappingURL=preview-pelis.component.css.map */

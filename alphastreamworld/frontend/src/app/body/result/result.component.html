@@ -1,0 +1,11 @@
+<section class="divpelis">
+  <div class="carousel">
+    <div  class="pelis" *ngFor="let pelis of resultPelis">
+
+<!--      <h1 class="pelis_lista" (mouseover)="mostrar()">{{pelis.title}}</h1>-->
+      <img class="imagen" [src]="pelis.poster_path | addImage" (click)="irPelis(pelis.id)">
+      <!--      <button class="botondetalles" (click)="irPelis(pelis.id)">Detalles</button>-->
+
+    </div>
+  </div>
+</section>

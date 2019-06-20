@@ -1,0 +1,29 @@
+<div class="completo" (mouseout)="loggedOut()">
+<div class="description">
+    <h1 class="peliculas__titulo">{{movie.title }}</h1>
+    <div>
+        <h2 class="peliculas__desc">{{movie.overview }}</h2>
+    </div>
+</div>
+<ng-template [ngIf]="isLoggedIn" [ngIfElse]="isLoggedOut" >
+    <section>
+        <div>
+            <div class="peliculas1" [ngStyle]="{'background-image': getUrl()}" (load)="changeLog()">
+
+                <img [src]="movie.poster_path| imgenDetalles" alt="" class="peliculas__titulo__img">
+
+            </div>
+        </div>
+    </section>
+
+</ng-template>
+<ng-template #isLoggedOut>
+    <section>
+        <div>
+            <div class="divPreview">
+                <iframe name="iframe" [src]="youtubeUrl | safeUrl" frameborder="0"></iframe>
+            </div>
+        </div>
+    </section>
+</ng-template>
+</div>

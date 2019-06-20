@@ -1,0 +1,99 @@
+section {
+  background-color: rgba(72, 72, 72, 0.75);
+  padding-top: 10%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+section div {
+  background-position: center;
+}
+section div img {
+  float: left;
+  margin: 2%;
+}
+section div div.peliculas1 {
+  background-blend-mode: multiply;
+}
+section div div.peliculas1 h2 {
+  padding-left: 2%;
+  padding-top: 2%;
+  color: #ff6b03;
+  font-family: Roboto;
+  letter-spacing: 2px;
+  font-size: 2.8rem;
+}
+section div div.peliculas1 h2 span {
+  color: white;
+  font-size: inherit;
+}
+section div div.peliculas1 p {
+  font-family: Roboto;
+  letter-spacing: 2px;
+  font-size: 1.8rem;
+  color: white;
+  padding: 4rem;
+}
+section div div.peliculas1 div {
+  padding: 10px 0;
+}
+section div div.peliculas1 div label {
+  display: block;
+  color: #eee;
+  font-size: 1.8rem;
+  padding: 8px 0;
+  cursor: pointer;
+}
+section div div.peliculas1 div input {
+  width: 50%;
+  height: 35px;
+  padding: 5px;
+  font-size: 1.5rem;
+  color: #fff;
+  background: transparent;
+  outline: none;
+  border: dashed #eeeeee 1px;
+}
+section div div.peliculas1 div input::-webkit-input-placeholder,
+section div div.peliculas1 div textarea::-webkit-input-placeholder,
+section div div.peliculas1 div textarea::placeholder {
+  color: #ff6b03;
+}
+section div div.peliculas1 div input:-moz-placeholder,
+section div div.peliculas1 div textarea:-moz-placeholder {
+  color: #ff6b03;
+}
+section div div.peliculas1 div input:-ms-input-placeholder,
+section div div.peliculas1 div textarea:-ms-input-placeholder {
+  color: #ff6b03;
+}
+section div div.peliculas1 div textarea {
+  width: 50%;
+  height: 100px;
+  padding: 5px;
+  font-size: 1.5rem;
+  color: #fff;
+  background: transparent;
+  outline: none;
+  border: dashed #eeeeee 1px;
+}
+section div div.peliculas1 div button {
+  display: block;
+  width: 15%;
+  margin: 2rem 0;
+  cursor: pointer;
+  background: rgba(212, 207, 207, 0.25);
+  padding: 12px 25px;
+  border: 1px solid #dddddd;
+  text-decoration: none;
+  color: #eee;
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+  font-weight: lighter;
+  z-index: 2;
+  text-transform: uppercase;
+}
+section div div.peliculas1 div button:hover {
+  background: rgba(212, 207, 207, 0.45);
+}
+
+/*# sourceMappingURL=editarperfil.component.css.map */

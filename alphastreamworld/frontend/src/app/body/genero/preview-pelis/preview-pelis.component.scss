@@ -1,0 +1,59 @@
+div.completo {
+    position: relative;
+
+    div.description {
+        position: absolute;
+        z-index: 1;
+        margin-left: 5%;
+        bottom: 4%;
+
+        h1 {
+
+            font-size: 4rem;
+            color: rgb(255, 107, 3);
+            font-family: Roboto;
+        }
+
+        div {
+            width: 40%;
+            h2{
+                margin-top: 2%;
+                color: white;
+                font-family: Roboto;
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    section {
+        position: relative;
+        z-index: 0;
+
+        div {
+            position: relative;
+
+
+            div.divPreview {
+                width: 100%;
+                height: 50vw;
+                overflow: hidden;
+
+                iframe {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+            div.peliculas1{
+                padding-top: 6.5%;
+                position: relative;
+                left: 65.5%;
+                width: 40%;
+
+                img{
+                    max-width: 80%;
+
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,128 @@
+
+nav.Cabecera {
+  align-items: center;
+  display: flex;
+  position: relative;
+  width: 100vw;
+  height: 4vw;
+  margin-top: 1rem;
+  vertical-align: middle;
+  //background-color: transparentize(#484848,0.5);
+  background: rgba(48,48,48,0);
+  padding: 10px;
+  -webkit-transition: all ease-out .5s;
+  -moz-transition: all ease-out .5s;
+  -o-transition: all ease-out .5s;
+  transition: all ease-out .5s;
+
+  ul{
+    display: flex;
+    align-items: center;
+    align-content: center;
+    margin: 0;
+    padding-left: 3%;
+    li{
+
+      list-style: none;
+      width: auto;
+      vertical-align: middle;
+      letter-spacing: 2px;
+      font-size: 1.4rem;
+      color: rgb(255, 107, 3);
+      margin-left: 2rem;
+
+      a{
+        font-family: Roboto;
+        text-decoration: none;
+        font-size: 1.4rem;
+        color: white;
+        cursor: pointer;
+        img{
+          width: 10vw;
+          height: 3vw;
+          margin-right: 2rem;
+        }
+      }
+      a:hover{
+        color: rgb(255, 107, 3);
+        transform: scale(0.06);
+      }
+    }
+    li.logout{
+      cursor: pointer;
+    }
+  }
+  form {
+
+    display: flex;
+    align-items: center;
+    align-content: center;
+    position: absolute;
+    right: 0;
+    margin-right: 8%;
+    vertical-align: middle;
+
+      input{
+        //alignment: right;
+        position: relative;
+        right: 0%;
+        width: 0.5vw;
+        height: 3vw;
+        outline: none;
+        border-radius: 0;
+        border: transparent;
+        vertical-align: middle;
+        //background-color: #1e0345;
+        font-size: 1.4rem;
+        color: white;
+        background: url("../../assets/images/lupa.png") no-repeat scroll 0 0 transparent;
+        //background: transparent;
+        background-size: 2.5vw;
+        padding: 5px 5px 5px 33px;
+        background-position: right;
+        transition: 0.8s;
+
+    }
+    input:hover{
+      width: 30vw;
+      height: 3vw;
+      border: solid white 1px;
+      background-position: left;
+    }
+    input:focus{
+      width: 30vw;
+      height: 3vw;
+      border: solid white 1px;
+      background-position: left;
+    }
+    input::-webkit-input-placeholder {
+      color: white;
+    }
+    input:-moz-placeholder {
+      color: white;
+    }
+    input:-ms-input-placeholder {
+      color: white;
+    }
+    .ng touched
+    input.botonbuscar{
+
+    }
+      img{
+        height: 2vw;
+        width: 2vw;
+        margin-left: 2vw;
+        vertical-align: middle;
+    }
+      img:hover{
+        cursor: pointer;
+
+      }
+      img.userHeader{
+        height: 3vw;
+        width: 3vw;
+      }
+  }
+
+}
+

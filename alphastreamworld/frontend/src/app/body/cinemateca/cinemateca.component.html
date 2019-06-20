@@ -1,0 +1,14 @@
+<section class="divpelis">
+  <h1>Cinemateca de {{user.username }}</h1>
+  <div class="carrousel">
+  <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideconfing">
+    <div ngxSlickItem class="pelis" *ngFor="let pelis of peliculas"><a (click)="irPelis(pelis.id)">
+
+
+      <img class="imagen"  [src]="pelis.poster_path | addImage"></a>
+      <span class="basura"><i class="far fa-trash-alt" (click)="deleteList(pelis.id)"></i></span>
+
+    </div>
+  </ngx-slick>
+  </div>
+</section>

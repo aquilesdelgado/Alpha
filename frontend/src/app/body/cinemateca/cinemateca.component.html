@@ -6,7 +6,7 @@
 
 
       <img class="imagen"  [src]="pelis.poster_path | addImage"></a>
-      <span class="basura"><i class="far fa-trash-alt" (click)="deleteList(pelis.id)"></i></span>
+      <span class="basura"><i class="far fa-trash-alt" (click)="deleteList(pelis._id)"></i></span>
 
     </div>
   </ngx-slick>

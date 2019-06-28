@@ -31,6 +31,8 @@ import { EditarperfilComponent } from './editarperfil/editarperfil.component';
 import { CinematecaComponent } from './body/cinemateca/cinemateca.component';
 import { PortadaComponent } from './portada/portada.component';
 import { FooterComponent } from './footer/footer.component';
+// import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+// import {MatVideoModule} from 'mat-video';
 
 
 
@@ -69,7 +71,9 @@ import { FooterComponent } from './footer/footer.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    SlickModule.forRoot()
+    SlickModule.forRoot(),
+    // BrowserAnimationsModule,
+    // MatVideoModule
   ],
   providers: [{ provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],

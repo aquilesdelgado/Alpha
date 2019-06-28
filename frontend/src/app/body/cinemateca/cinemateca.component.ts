@@ -30,7 +30,8 @@ export class CinematecaComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pelisDatos.getPelis().subscribe(datos => this.peliculas = datos);
+    this.pelisDatos.getAlphaList(this.user._id).subscribe(datos => this.peliculas = datos);
+    console.log(this.user._id);
   }
 
   irPelis(id: any) {
@@ -38,7 +39,10 @@ export class CinematecaComponent implements OnInit {
   }
 
   deleteList(id: any) {
-    this.pelisDatos.deleteFronList(id);
+    this.pelisDatos.deleteFronList(id, this.user._id).subscribe(() => {
+      console.log('success');
+    });
     this.ngOnInit();
+    console.log(id, this.user._id);
   }
 }

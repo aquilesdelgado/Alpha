@@ -68,11 +68,11 @@ export class PelisDatosService {
     return this.http.put(topPelis, { idFilm : `${idFilm}`});
   }
   getAlphaList(idUser) {
-    const topPelis = `${this.urlAPI2}agregarfavorita/${idUser}`;
+    const topPelis = `${this.urlAPI}listafavoritas/${idUser}`;
     return this.http.get<any[]>(topPelis);
   }
-  deleteFronList(idFilm) {
-    const topPelis = `${this.urlAPI2}agregarfavorita/${idFilm}`;
+  deleteFronList(idFilm, idUser) {
+    const topPelis = `${this.urlAPI}listafavoritas/${idUser}/${idFilm}`;
     return this.http.delete(topPelis);
   }
 }

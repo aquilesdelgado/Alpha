@@ -1,3 +1,5 @@
+// import {User} from "../frontend/src/app/_models";
+
 require('rootpath')();
 const express = require('express');
 // let bodyParser = require('body-parser');
@@ -58,6 +60,7 @@ db.once('open', function() {
 });
 
 const Pelicula = require('./models/peliculamodel');
+const User1 = require('./users/user.model');
 let peliculasIDs = [];
 
 /* URLS de conexión a MovieDB */
@@ -314,4 +317,31 @@ app.put('/pelicula/:id',(req,res) => {
         //console.log (peli);
         return res.json(peli)
     })
+});
+api.get('/listafavoritas/:id',async (req,res) => {
+    let id = req.params.id;
+    const user = await User1.findById(`${id}`,'list');
+    let pelis = [];
+    for (let i = 0; i<user.list.length; i++) {
+
+        let pel = await Pelicula.findById(`${user.list[i]}`);
+        pelis.push(pel);
+        console.log(pel);
+    }
+    return res.json(pelis);
+
+});
+api.put('/listafavoritas/:id', async (req,res) =>{
+    let id = req.params.id;
+    let peliId = req.body;
+    const user = await User1.findByIdAndUpdate(`${id}`,{$addtoset:{list:[`${peliId}`]}});
+    console.log(user);
+    return res.json(user);
+});
+api.delete('/listafavoritas/:id/:idpelis', async (req,res) =>{
+    let id= req.params.id;
+    let idPelis = req.params.idpelis;
+    const deletePeli = await  User1.updateOne({ _id: `${id}`}, {$pull: {list: {$in: [`${idPelis}`]}}});
+    console.log(deletePeli);
+    return res.json(deletePeli);
 });

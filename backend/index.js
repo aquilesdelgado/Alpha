@@ -333,15 +333,17 @@ api.get('/listafavoritas/:id',async (req,res) => {
 });
 api.put('/listafavoritas/:id', async (req,res) =>{
     let id = req.params.id;
-    let peliId = req.body;
-    const user = await User1.findByIdAndUpdate(`${id}`,{$addtoset:{list:[`${peliId}`]}});
+    let peliId = req.body.list;
+    console.log(peliId);
+    const user = await User1.findByIdAndUpdate(`${id}`,{ $addToSet: { list: `${peliId}` }}).catch(() =>{console.log('error')});
     console.log(user);
     return res.json(user);
+
 });
 api.delete('/listafavoritas/:id/:idpelis', async (req,res) =>{
     let id= req.params.id;
     let idPelis = req.params.idpelis;
-    const deletePeli = await  User1.updateOne({ _id: `${id}`}, {$pull: {list: {$in: [`${idPelis}`]}}});
+    const deletePeli = await  User1.updateOne({ _id: `${id}`}, {$pull: {list: {$in: [`${idPelis}`]}}}).catch(() =>{console.log('error')});
     console.log(deletePeli);
     return res.json(deletePeli);
 });

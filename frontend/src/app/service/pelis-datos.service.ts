@@ -64,8 +64,8 @@ export class PelisDatosService {
     return this.http.get<any[]>(topPelis);
   }
   putAlphaList(idUser, idFilm) {
-    const topPelis = `${this.urlAPI2}agregarfavorita/${idUser}`;
-    return this.http.put(topPelis, { idFilm : `${idFilm}`});
+    const topPelis = `${this.urlAPI}listafavoritas/${idUser}`;
+    return this.http.put(topPelis, { list : `${idFilm}`});
   }
   getAlphaList(idUser) {
     const topPelis = `${this.urlAPI}listafavoritas/${idUser}`;

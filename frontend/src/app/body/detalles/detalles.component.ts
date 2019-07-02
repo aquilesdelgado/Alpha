@@ -69,8 +69,8 @@ export class DetallesComponent implements OnInit {
         // }
     }
 
-    guardarPeli() {
-        this.pelisDatos.putAlphaList(this.usuario._id, this.id);
+    guardarPeli(id) {
+        this.pelisDatos.putAlphaList(this.usuario._id, id).subscribe(() => console.log("Peli Guardada"));
     }
 }
 

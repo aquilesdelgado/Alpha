@@ -1,4 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {PelisDatosService} from '@app/service/pelis-datos.service';
 
 @Component({
   selector: 'app-sliders',
@@ -6,6 +7,7 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
   styleUrls: ['./sliders.component.scss']
 })
 export class SlidersComponent implements OnInit {
+  usuario = JSON.parse(localStorage.getItem('currentUser'));
   @Input() arrayPelis: any;
   @Output() detalles: EventEmitter<any>;
   slideconfing = {
@@ -23,7 +25,7 @@ export class SlidersComponent implements OnInit {
     dots: false,
     infinite: false
   };
-  constructor() {this.detalles = new EventEmitter<any>(); }
+  constructor(private pelisDatos: PelisDatosService) {this.detalles = new EventEmitter<any>(); }
 
   ngOnInit() {
   }
@@ -31,9 +33,7 @@ export class SlidersComponent implements OnInit {
   irPelis(id: any) {
     this.detalles.emit(id);
   }
-
-  mostrar() {
-    const titulo = document.querySelector('.pelis_lista');
-
+  guardarPeli(id) {
+    this.pelisDatos.putAlphaList(this.usuario._id, id).subscribe(() => console.log('Peli Guardada'));
   }
 }

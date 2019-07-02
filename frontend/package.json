@@ -33,6 +33,7 @@
     "plyr": "^3.5.4",
     "rxjs": "~6.3.3",
     "slick-carousel": "^1.8.1",
+    "sweetalert": "^2.1.2",
     "tslib": "^1.9.0",
     "videogular2": "^6.4.0",
     "zone.js": "~0.8.26"

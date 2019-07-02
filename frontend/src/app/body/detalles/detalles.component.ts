@@ -2,8 +2,9 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {PelisDatosService} from '../../service/pelis-datos.service';
 import {DashjsPlayerComponent} from 'angular-dashjs-player';
-import {generateExpandoInstructionBlock} from '@angular/core/src/render3/instructions';
-import {falseIfMissing} from 'protractor/built/util';
+import sweetalert from 'sweetalert';
+
+
 
 
 @Component({
@@ -54,23 +55,32 @@ export class DetallesComponent implements OnInit {
         this.isLoggedIn = true;
     }
     flechaLoad() {
-        // this.verflecha = true;
-        // setTimeout(() => {
-        //     this.verflecha = false;
-        // }, 4000);
     }
 
     flecha() {
-        // if (this.verflecha === false) {
-        //     this.verflecha = true;
-        //     setTimeout(() => {
-        //         this.verflecha = false;
-        //     }, 3000);
-        // }
     }
 
     guardarPeli(id) {
-        this.pelisDatos.putAlphaList(this.usuario._id, id).subscribe(() => console.log("Peli Guardada"));
+     // @ts-ignore
+      sweetalert(`¿Desea agregar ${this.movie.title} a su cinemateca?`, {
+       buttons: {
+         cancel: 'No, gracias!',
+         catch: {
+           text: 'Sí, gracias!',
+           value: 'aceptar'
+         }
+       }
+     }).then((value) => {
+       switch (value) {
+         case 'No, gracias!' :
+           sweetalert(`${this.movie.title}, no ha sido agregada a tú cinemateca`);
+           break;
+         case 'aceptar' :
+           sweetalert(`${this.movie.title}`, 'ha sido agregada a tú cinemateca' , 'success');
+           this.pelisDatos.putAlphaList(this.usuario._id, id).subscribe(() => console.log('Peli Guardada'));
+           break;
+       }
+     });
     }
 }
 

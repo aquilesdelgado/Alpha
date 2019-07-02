@@ -1,5 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import {PelisDatosService} from '@app/service/pelis-datos.service';
+import sweetalert from 'sweetalert';
 
 @Component({
   selector: 'app-sliders',
@@ -33,7 +34,26 @@ export class SlidersComponent implements OnInit {
   irPelis(id: any) {
     this.detalles.emit(id);
   }
-  guardarPeli(id) {
-    this.pelisDatos.putAlphaList(this.usuario._id, id).subscribe(() => console.log('Peli Guardada'));
+  guardarPeli(id, title) {
+
+    sweetalert(`¿Desea agregar ${title} a su cinemateca?`, {
+      buttons: {
+        cancel: 'No, gracias!',
+        catch: {
+          text: 'Sí, gracias!',
+          value: 'aceptar'
+        }
+      }
+    }).then((value) => {
+      switch (value) {
+        case 'No, gracias!' :
+          sweetalert(`${title}, no ha sido agregada a tú cinemateca`);
+          break;
+        case 'aceptar' :
+          sweetalert(`${title}`, 'ha sido agregada a tú cinemateca' , 'success');
+          this.pelisDatos.putAlphaList(this.usuario._id, id).subscribe(() => console.log('Peli Guardada'));
+          break;
+      }
+    });
   }
 }

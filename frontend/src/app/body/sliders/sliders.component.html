@@ -2,7 +2,7 @@
   <ngx-slick class="carousel" #slickModal="slick-modal" [config]="slideconfing">
     <div ngxSlickItem class="pelis" *ngFor="let pelis of arrayPelis"><a (click)="irPelis(pelis.id)">
       <img class="imagen"  [src]="pelis.poster_path | addImage" alt="imagen de película"></a>
-      <span class="basura"><i class="fas fa-list" (click)="guardarPeli(pelis._id)"></i></span>
+      <span class="basura"><i class="fas fa-list" (click)="guardarPeli(pelis._id,pelis.title)"></i></span>
     </div>
   </ngx-slick>
 </section>
